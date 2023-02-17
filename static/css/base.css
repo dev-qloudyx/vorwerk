@@ -80,15 +80,15 @@ footer {
 }
 
 .btn {
-  color:#dd6f08;
-  border-color: #dd6f08;
+  color:#01a28d;
+  border-color: #01a28d;
   background-color: white;
 }
 
 .btn:hover {
   color:white;
-  border-color: #dd6f08;
-  background-color: #dd6f08;
+  border-color: #01a28d;
+  background-color: #01a28d;
 }
 
 .btn:active {
@@ -327,6 +327,18 @@ a.article:hover {
   color: #fff !important;
 }
 
+li.menu-item {
+  color: white;
+  background-color: #01a28d;
+  border-radius: 5px;
+  /* padding: 0.25rem 0.5rem; */
+  margin-top: 0;
+}
+
+.navbar-toggler {
+  padding: 0.5rem 0.75rem;
+}
+
 /* ---------------------------------------------------
   CONTENT STYLE
 ----------------------------------------------------- */
@@ -336,12 +348,18 @@ a.article:hover {
   padding: 20px;
   min-height: 100vh;
   transition: all 0.3s;
-  margin-left: 220px; 
+  /* margin-left: 220px;  */
 }
 
 /* ---------------------------------------------------
   MEDIAQUERIES
 ----------------------------------------------------- */
+@media (max-width: 992px) {
+  li.menu-item,
+  .menu-user {
+    margin-top: 1rem;
+  }
+}
 
 @media (max-width: 768px) {
   #sidebar {
