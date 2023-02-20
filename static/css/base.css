@@ -85,6 +85,12 @@ footer {
   background-color: white;
 }
 
+.btn-rev {
+  color: white;
+  border: #01a28d;
+  background-color: #01a28d;
+}
+
 .btn:hover {
   color:white;
   border-color: #01a28d;
@@ -92,14 +98,14 @@ footer {
 }
 
 .btn:active {
-  color:#dd6f08;
-  border-color: #dd6f08;
+  color:#01a28d;
+  border-color: #01a28d;
 }
 
 .btn[aria-expanded="true"]{
   color:white;
-  border-color: #dd6f08;
-  background-color: #dd6f08;
+  border-color: #01a28d;
+  background-color: #01a28d;
 }
 
 .btn-info {
@@ -109,8 +115,8 @@ footer {
 
 .btn-selected {
   color:white;
-  border-color: #dd6f08;
-  background-color: #dd6f08;
+  border-color: #01a28d;
+  background-color: #01a28d;
 }
 
 .btn-outline-danger {
@@ -335,8 +341,17 @@ li.menu-item {
   margin-top: 0;
 }
 
+li.menu-user > a > img {
+  width: 35px;
+  height: 35px;
+}
+
 .navbar-toggler {
   padding: 0.5rem 0.75rem;
+}
+
+div.navbar-collapse {
+  background-color: white;
 }
 
 /* ---------------------------------------------------
@@ -345,7 +360,7 @@ li.menu-item {
 
 #content {
   width: 100%;
-  padding: 20px;
+  padding: 1rem;
   min-height: 100vh;
   transition: all 0.3s;
   /* margin-left: 220px;  */
@@ -354,11 +369,26 @@ li.menu-item {
 /* ---------------------------------------------------
   MEDIAQUERIES
 ----------------------------------------------------- */
-@media (max-width: 992px) {
+@media (max-width: 991px) {
   li.menu-item,
   .menu-user {
-    margin-top: 1rem;
+    font-size: 0.9em;
+    background-color: #01a28d;
+    width: 100%;
+    line-height: 1.3rem;
+    border-radius: 0;
   }
+  li.menu-user > a > img {
+    width: 25px;
+    height: 25px;
+  }
+  li.menu-user > a {
+    color: white;
+  }
+  div.navbar-collapse {
+    background-color: #01a28d;
+  }
+
 }
 
 @media (max-width: 768px) {
