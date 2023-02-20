@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="content-section">
+        <b>Evento:</b> {{ inscricao.subevento.evento.nome }}
+        <br>
+        <b>Data: </b>{{ inscricao.subevento.datahorainicio|date:"d/m/Y" }}
+        <br>
+        <b>Hora: </b>{{ inscricao.subevento.datahorainicio|date:"h:i" }}
+        <br>
+        <b>Local: </b>{{ inscricao.subevento.local }}
+        <br>
+        <b>Morada: </b>{{ inscricao.subevento.local.enderecoum }}
+        {% if inscricao.subevento.local.enderecodois %}
+        , {{ inscricao.subevento.local.enderecodois }}
+        {% endif %}
+        <br>
+        <b>Código Postal: </b>{{ inscricao.subevento.local.codigopostal }}
+        <br>
+        <br>
+        <a class="btn" href="https://www.waze.com/ul?ll={{coo1}}00%2C{{coo2}}00&navigate=yes&zoom=17" target="_blank"><b>Waze</b></a>
+        <a class="btn" href="https://www.google.com/maps/search/?api=1&query={{coo1}}%2C{{coo2}}" target="_blank"><b>Google Maps</b></a>
+        
+    </div>
+
+{% endblock content %}

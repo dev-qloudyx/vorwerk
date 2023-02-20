@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content%}
+    <div class="content-section">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <div class="row form-group">
+                    <div class="col-md-6">
+                        {{ form.subevento|as_crispy_field }}
+                    </div>
+                        {{ form.user|as_crispy_field }}
+                </div>
+            </fieldset>
+            <div class="form-group">
+                <button class="btn" type="submit">Guardar</button>
+                <a class="btn btn-outline-danger" style="border-color: red;" href="{% url 'eventos:inscricao' %}">Cancelar</a>
+            </div>
+        </form>
+    </div>
+{% endblock content%}

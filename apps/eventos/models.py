@@ -24,8 +24,14 @@ class SubEvento(models.Model):
     local = models.ForeignKey(Local, on_delete=models.CASCADE)
     datahorainicio = models.DateTimeField()
     datahorafim = models.DateTimeField()
-    notas = models.TextField(max_length=250)
+    notas = models.TextField(max_length=250, blank=True, null=True)
+
+    def __str__(self):
+        return f'{self.evento.nome} - {self.local}'
 
 class Inscricao(models.Model):
     subevento = models.ForeignKey(SubEvento, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.subevento.evento} - {self.user}'

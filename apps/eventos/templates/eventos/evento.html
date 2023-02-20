@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content%}
+    <div class="content-section">
+        <b>Nome:</b> {{ evento.nome }}
+        <br>
+        <b>Data:</b> {{ evento.datahorainicio|date:"d/m/Y"}}
+        <br>
+        <b>Hora:</b> {{ evento.datahorainicio|date:"h:i" }}
+        <br><br>
+        <a class="btn" href="{% url 'eventos:nova-inscricao' %}">Inscrever</a>
+        
+        
+    </div>
+
+{% endblock content%}
