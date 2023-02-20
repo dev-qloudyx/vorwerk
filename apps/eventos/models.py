@@ -9,6 +9,7 @@ class Evento(models.Model):
     local = models.CharField(max_length=50)
     datahorainicio = models.DateTimeField()
     datahorafim = models.DateTimeField()
+    #estado
     
     def __str__(self):
         return f'{self.nome} - {self.datahorainicio} a {self.datahorafim}'
