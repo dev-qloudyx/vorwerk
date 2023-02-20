@@ -10,10 +10,45 @@
 </head>
 
 <body>
+    <div class="container-fluid px-0">
+        <!-- Top Navbar -->
+        <nav class="navbar navbar-expand-lg  mx-4 mt-3">
+            <a class="navbar-brand mr-0 ml-4" href="#"><img class="w-75" src="/media/bimby-logo.png" alt=""></a>
+            <button class="btn navbar-toggler mr-4" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+          
+            <div class="collapse navbar-collapse nav justify-content-lg-around flex-column flex-lg-row" id="navbarSupportedContent">
+                <li class="nav-item menu-item">
+                    <a class="nav-link active" href="#">Informação Geral</a>
+                </li>
+                <li class="nav-item menu-item">
+                    <a class="nav-link" href="#">Lojas Bimby®</a>
+                </li>
+                <li class="nav-item menu-item">
+                    <a class="nav-link" href="#">Receitas</a>
+                </li>
+                <li class="nav-item menu-item">
+                    <a class="nav-link" href="#">Descontos</a>
+                </li>
+                <li class="nav-item menu-item">
+                    <a class="nav-link" href="#">Passatempo</a>
+                </li>
+                <li class="menu-user">
+                    <a href="{% url 'users:profile' %}">
+                        <img class="rounded-circle" style="width: 35px; height: 35px;"
+                            src="{{ user.profile.image.url }}">
+                    </a>
+                    <a style="margin-right: 30px;" href="{% url 'users:profile' %}">{{ user.username }}</a>
+                    <button onclick="logOut()" class="btn btn-md mr-4"
+                        style="padding-left: 12px; padding-right: 12px;"><i class="fas fa-power-off"></i>
+                    </button>
+                </li>
+            </div>
+        </nav>
 
-    <div class="wrapper">
         <!-- Sidebar  -->
-        <nav id="sidebar">
+        <!-- <nav id="sidebar">
             <div class="sidebar-header" style="text-align: center;">
                 <a href="#">APP</a>
             </div>
@@ -31,7 +66,7 @@
                     &#169; {% now "Y" %}, eXcellerated by qloudyx.
                 </a>
             </div>
-        </nav>
+        </nav> -->
 
         <!-- Page Content  -->
 
@@ -43,7 +78,7 @@
                 <span></span>
             </button> -->
 
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
                     <div>
                         <a class="btn d-md-none" id="sidebarCollapse">
@@ -58,11 +93,12 @@
                         </a>
                         <a style="margin-right: 30px;" href="{% url 'users:profile' %}">{{ user.username }}</a>
                         <button onclick="logOut()" class="btn btn-md"
-                            style="padding-left: 12px; padding-right: 12px;"><i class="fas fa-power-off"></i></button>
+                            style="padding-left: 12px; padding-right: 12px;"><i class="fas fa-power-off"></i>
+                        </button>
 
                     </div>
                 </div>
-            </nav>
+            </nav> -->
             <div>
                 {% for message in messages %}
                 <div class="text-center alert alert-{{ message.tags }}">
@@ -73,6 +109,19 @@
                 {% block content %}{% endblock %}
             </div>
         </div>
+        <div class="d-none d-sm-none d-md-block w-100 py-2" style="background-color: #01a28d; color: rgb(221, 221, 221); text-align: center; position:fixed; bottom: 0; text-align: center; font-size: 12px;">
+            <span>
+                Termos e Condições <br>
+                Politica de privacidade <br>
+                links para SoMe 
+            </span><br>
+            <span style="color: white;">v. 22.01.01</span><br>
+            <a href="https://qloudyx.pt" target="_blank">
+                &#169; {% now "Y" %}, eXcellerated by qloudyx.
+            </a>
+        </div>
+        
+        
     </div>
     {% include '_footer.html' %}
     <script id="jsLogoutTemplate" type="text/x-kendo-template">
