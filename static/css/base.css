@@ -354,6 +354,11 @@ div.navbar-collapse {
   background-color: white;
 }
 
+.collapsing {
+  display: none;
+  transition: none;
+}
+
 /* ---------------------------------------------------
   CONTENT STYLE
 ----------------------------------------------------- */
@@ -387,6 +392,15 @@ div.navbar-collapse {
   }
   div.navbar-collapse {
     background-color: #01a28d;
+  }
+  #navbarSupportedContent {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    margin-top: 21.5em;
+  }
+  #content {
+    position: relative;
   }
 
 }
