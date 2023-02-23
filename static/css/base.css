@@ -341,7 +341,7 @@ li.menu-item {
   margin-top: 0;
 }
 
-li.menu-user > a > img {
+.menu-user > img {
   width: 35px;
   height: 35px;
 }
@@ -383,10 +383,6 @@ div.navbar-collapse {
     line-height: 1.3rem;
     border-radius: 0;
   }
-  li.menu-user > a > img {
-    width: 25px;
-    height: 25px;
-  }
   li.menu-user > a {
     color: white;
   }
@@ -397,7 +393,7 @@ div.navbar-collapse {
     position: absolute;
     z-index: 1;
     width: 100%;
-    margin-top: 21.5em;
+    margin-top: 21.25em;
   }
   #content {
     position: relative;

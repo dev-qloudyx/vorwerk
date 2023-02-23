@@ -13,47 +13,44 @@
     <div class="container-fluid px-0">
         <!-- Top Navbar -->
         <nav class="navbar navbar-expand-lg mx-3 mt-3 p-0">
-            <a class="navbar-brand ml-1 mr-4" href="#"><img class="w-75" src="{% static 'images/bimby-logo.png' %}" alt=""></a>
+            <a class="navbar-brand ml-2 mr-4" href="#"><img src="{% static 'images/bimby-logo.png' %}" alt="" style="width: 65%"></a>
             <a class="mr-4 ml-auto d-lg-none" href="{% url 'users:profile' %}">
                 <img class="rounded-circle mr-2" style="width: 35px; height: 35px;"
                         src="{{ user.profile.image.url }}">{{ user.username }}
             </a>
-            <button class="btn navbar-toggler mr-1" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="btn navbar-toggler mr-2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
             </button>
           
-            <div class="collapse navbar-collapse nav justify-content-lg-between flex-column flex-lg-row p-3 p-lg-0" id="navbarSupportedContent">
-                <li class="nav-item menu-item">
+            <div class="collapse navbar-collapse nav justify-content-lg-center flex-column flex-lg-row p-3 p-lg-0" id="navbarSupportedContent">
+                <li class="nav-item menu-item mx-lg-1 mx-xl-4">
                     <a class="nav-link active" href="{% url 'eventos:evento' %}">Informação Geral</a>
                 </li>
-                <li class="nav-item menu-item">
+                <li class="nav-item menu-item mx-lg-1 mx-xl-4">
                     <a class="nav-link" href="#">Lojas Bimby®</a>
                 </li>
-                <li class="nav-item menu-item">
+                <li class="nav-item menu-item mx-lg-1 mx-xl-4">
                     <a class="nav-link" href="#">Receitas</a>
                 </li>
-                <li class="nav-item menu-item">
+                <li class="nav-item menu-item mx-lg-1 mx-xl-4">
                     <a class="nav-link" href="#">Descontos</a>
                 </li>
-                <li class="nav-item menu-item">
+                <li class="nav-item menu-item mx-lg-1 mx-xl-4">
                     <a class="nav-link" href="#">Passatempo</a>
                 </li>
-                
-                <li class="menu-user">
-                    <hr class="d-lg-none" style="border-top: 1px solid white;">
-                    <a class="d-none d-lg-inline-block mr-1 px-3 py-2" href="{% url 'users:profile' %}">
-                        <img class="rounded-circle mr-2" src="{{ user.profile.image.url }}">{{ user.username }}
-                    </a>
-                    <button onclick="logOut()" class="btn btn-md mr-1 d-none d-lg-inline-block"
-                        style="padding-left: 12px; padding-right: 12px;"><i class="fas fa-power-off"></i>
-                    </button>
-                </li>
                 <li class="menu-user d-block d-lg-none">
+                    <hr class="d-lg-none" style="border-top: 1px solid white;">
                     <button onclick="logOut()" class="btn-rev btn-md mr-1"
                         style="padding: 0.5rem 1rem;"><i class="fas fa-power-off"></i>&nbsp; Logout
                     </button>
                 </li>
             </div>
+
+            <a class="d-none d-lg-inline-block mr-1 px-3 py-2 menu-user" href="{% url 'users:profile' %}">
+                <img class="rounded-circle mr-2" src="{{ user.profile.image.url }}">{{ user.username }}
+            </a>
+            <button onclick="logOut()" class="btn btn-md mr-2 d-none d-lg-inline-block" style="padding-left: 12px; padding-right: 12px;"><i class="fas fa-power-off"></i>
+            </button>
         </nav>
 
         <!-- Sidebar  -->
