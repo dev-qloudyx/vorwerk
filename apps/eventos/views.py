@@ -51,3 +51,8 @@ def evento(request):
         return detalhe_inscricao(request)
     else:
         return render(request, 'eventos/evento.html', context={'evento':evento})
+    
+
+def home(request):
+    return render(request, 'eventos/home.html',
+                    context={'title':'Home'})

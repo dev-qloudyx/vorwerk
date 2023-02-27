@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content%}
+<div class="">
+    <div class="row">
+        <div class="col-12 p-5" style="background-color: whitesmoke;">
+            <img src="{% static 'images/sm.png' %}" alt="" width="20%">
+            <div>
+                Já ouviu dizer que o ar é de todos? <br>
+                O dia aberto Bimby® vai ser uma lufada de ar fresco para a sua cozinha. <br>
+                Vamos dar-lhe AR para poupAR, AR para organizAR, AR para planeAR, AR para retomAR e o AR para respirAR. <br> 
+                Venha conhecer o novo acessório, a Mandolina Bimby® e aproveitar oportunidades incríveis para rentabilizar a sua Bimby® <br> 
+                Visite-nos no dia 11 de março de 2023 das 10h às 20h.
+            </div>
+            <a class="btn btn-outline-info" href="#">Programação/Informações do evento</a>
+        </div>
+    </div>
+    <div class="row" style="background-color: lightgrey;">
+        <div class="col-12 col-lg-8 embed-responsive embed-responsive-16by9 mx-auto" style="background-color: lightgrey;">
+            <iframe class="embed-responsive-item p-5 m-auto" src="https://www.youtube.com/embed/CRK7LhVUSuk" style="width: 100%; height: 100%; border:none;"></iframe>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-6 col-lg-3 p-5" style="background-color: lightgrey;">
+            <h4>Apresentar a Mandolina</h4>
+            <img src="{% static 'images/sm.png' %}" alt="" width="100%">
+            <div>
+                Faça refeições impressionantes e surpreendentemente fáceis com a Mandolina. Fatie e rale ingredientes diferentes, de forma a dar sabor e textura a uma grande variedade de pratos.
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3 p-5" style="background-color: whitesmoke;">
+            <h4>Conhecer a Bimby®</h4>
+            <img src="{% static 'images/sm.png' %}" alt="" width="100%">
+            <div>
+                Descubra a Bimby® TM6. É incrivelmente simples!
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3 p-5" style="background-color: lightgrey;">
+            <h4>Vender a retoma</h4>
+            <img src="{% static 'images/sm.png' %}" alt="" width="100%">
+            <div>
+                Se tem uma Bimby® TM21, TM31, TM5 ou qualquer outro robot de cozinha multifunções que cozinhe, vai adorar esta oportunidade.
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3 p-5" style="background-color: whitesmoke;">
+            <h4>Descontos e promoções</h4>
+            <img src="{% static 'images/sm.png' %}" alt="" width="100%">
+            <div>
+                É hora de poupar! Descontos até 60%.*
+            <br>* descontos apenas nas lojas físicas onde o evento se realiza durante o dia 11 de março
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-lg-6 p-5" style="background-color: lightgrey;">
+            <h4></h4>
+            <div>
+                Sugestões de receitas que farão a sua despensa mais rica e receitas para explorar o novo acessório Bimby® - Mandolina.
+            </div>
+            <a class="btn btn-outline-info" href="#">Saber Mais</a>
+        </div>
+        <div class="col-12 col-lg-6 p-5" style="background-color: whitesmoke;">
+            <h4></h4>
+            <div>
+                Participe no passatempo "O Ar é de todos" e ganhe um prémio!
+            </div>
+            <a class="btn btn-outline-info" href="#">Passatempo</a>
+        </div>
+    </div>
+</div>
+{% endblock content%}
