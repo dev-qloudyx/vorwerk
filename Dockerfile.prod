@@ -1,0 +1,39 @@
+# Use the official Python 3.8 Alpine image as the base
+FROM python:alpine
+
+# Create the 'app' user and group
+RUN addgroup -S app && adduser -S app -G app
+
+# Set the home and app directories for the 'app' user
+ENV HOME=/home/vorwerk
+ENV APP_HOME=${HOME}/web
+
+# Create the necessary directories and set the working directory
+RUN mkdir -p ${APP_HOME} ${APP_HOME}/staticfiles ${APP_HOME}/media
+WORKDIR ${APP_HOME}
+
+# Set environment variables for improved performance
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+# Install system dependencies and build dependencies
+RUN apk update \
+    && apk add --virtual .build-deps \
+        postgresql-dev gcc python3-dev musl-dev \
+    && apk add --no-cache \
+        postgresql \
+        jpeg-dev zlib-dev libjpeg libffi-dev libmagic \
+    && pip install --upgrade pip
+
+# Copy and install application dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the application code
+COPY . ${APP_HOME}
+
+# Change ownership of the app directory to the 'app' user
+RUN chown -R app:app ${APP_HOME}
+
+# Run the application as the 'app' user
+USER app
