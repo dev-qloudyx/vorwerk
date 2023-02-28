@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>GERAR BBCode</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">GERAR</button>
+  </form>
+{% if result %}
+  <p>{{ result }}</p>
+{% endif %}
+{% endblock %}
