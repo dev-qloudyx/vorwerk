@@ -52,7 +52,10 @@ def evento(request):
     else:
         return render(request, 'eventos/evento.html', context={'evento':evento})
     
-
 def home(request):
     return render(request, 'eventos/home.html',
                     context={'title':'Home'})
+
+def receitas(request):
+    return render(request, 'eventos/receitas.html',
+                    context={'title':'Receitas'})
