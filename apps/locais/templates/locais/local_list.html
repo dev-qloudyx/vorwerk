@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content%}
+<div class="row">
+    <div class="col-12 p-5" style="background-color: whitesmoke;">
+        <div>
+            Descubra a loja mais próxima de si.
+        </div>
+    </div>
+    {% for local in locais %}
+    <div class="col-12 col-md-6 col-lg-4 col-xl-3 px-5 py-4" style="background-color: whitesmoke;">
+        <h5>{{ local.nome }}</h5>
+        <p>Morada: {{ local.enderecoum }}
+        {% if local.enderecodois %}
+        , {{ local.enderecodois }}
+        {% endif %}
+        </p>
+        <p>Cód. Postal: {{ local.codigopostal }}</p>
+        <p>Cidade: {{ local.cidade }}</p>
+        
+        <a class="btn btn-outline-info" href="https://www.waze.com/ul?ll={{ coo1 }}00%2C{{ coo2 }}00&navigate=yes&zoom=17" target="_blank"><b>Waze</b></a>
+        <a class="btn btn-outline-info" href="https://www.google.com/maps/search/?api=1&query={{ coo1 }}%2C{{ coo2 }}" target="_blank"><b>Google Maps</b></a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content%}
