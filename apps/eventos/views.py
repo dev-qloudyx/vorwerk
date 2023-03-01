@@ -46,8 +46,9 @@ class NovaInscricao(CreateView):
 
 def evento(request):
     evento = Evento.objects.last()
-    ins = Inscricao.objects.filter(user=request.user)
-    if ins:
-        return detalhe_inscricao(request)
-    else:
-        return render(request, 'eventos/evento.html', context={'evento':evento})
+    # if request.user.is_authenticated:
+    #     ins = Inscricao.objects.filter(user=request.user)
+    #     if ins:
+    #         return detalhe_inscricao(request)
+    #     else:
+    #         return render(request, 'eventos/evento.html', context={'evento':evento})
