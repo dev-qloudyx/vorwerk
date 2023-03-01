@@ -8,9 +8,10 @@ django = "*"
 django-crispy-forms = "*"
 pillow = "*"
 psycopg2-binary = "*"
-
 djangorestframework = "*"
 requests = "*"
+crispy-bootstrap4 = "*"
+
 [dev-packages]
 
 [requires]

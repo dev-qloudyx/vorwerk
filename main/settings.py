@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'apps.locais.apps.LocaisConfig',
     'apps.eventos.apps.EventosConfig',
     'crispy_forms',
+    'crispy_bootstrap4',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
