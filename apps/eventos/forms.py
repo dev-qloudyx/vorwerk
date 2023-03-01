@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Inscricao
+from .models import Evento, Inscricao
 
 from apps.eventos.models import Inscricao
 from apps.users.models import User
@@ -15,3 +15,14 @@ class InscricaoForm(forms.ModelForm):
         user = kwargs.pop('user')
         super().__init__(*args, **kwargs)
         self.initial['user'] = user
+
+class GenerateBBCodeForm(forms.Form):
+    code = forms.CharField(max_length=10)
+
+class SelectCodesForm(forms.Form):
+    num_codes = forms.IntegerField(min_value=1, max_value=10000)
+    event = forms.ModelChoiceField(queryset=Evento.objects.all())
+
+class StoreCodesForm(forms.Form):
+    num_codes = forms.IntegerField(min_value=1, max_value=100000)
+    event = forms.ModelChoiceField(queryset=Evento.objects.all())

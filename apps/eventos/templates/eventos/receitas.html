@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content%}
+<div class="row">
+    <div class="col-12 p-5" style="background-color: whitesmoke;">
+        <div>
+            Experimente o prazer de uma vida organizada, onde o imprevisto não nos apanha de surpresa e a garantia de que aquilo que vai comer é saudável, equilibrado e está ali mesmo... Na prateleira da despensa! <br> <br>
+            Deixamos aqui algumas sugestões de receitas que farão a sua despensa mais rica:
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          	<button class="nav-link active" id="despensa-tab" data-toggle="tab" data-target="#despensa" type="button" role="tab" aria-controls="despensa" aria-selected="true">Despensa</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          	<button class="nav-link" id="mandolina-tab" data-toggle="tab" data-target="#mandolina" type="button" role="tab" aria-controls="mandolina" aria-selected="false">Mandolina</button>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="despensa" role="tabpanel" aria-labelledby="despensa-tab">
+            <div class="row">
+				<div class="col-12 col-md-6 col-lg-3 p-5" style="background-color: lightgrey;">
+                    <a href="https://cookidoo.pt/recipes/recipe/pt-PT/r347450" target="_blank">
+                        <h5>Manteiga de amendoim em dois tamanhos</h5>
+                        <img src="{% static 'images/sm.png' %}" alt="" width="100%">
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 p-5" style="background-color: whitesmoke;">
+                    <a href="https://cookidoo.pt/recipes/recipe/pt-PT/r432184" target="_blank">
+                        <h5>Molho de caramelo</h5>
+                        <img src="{% static 'images/sm.png' %}" alt="" width="100%">
+                    </a>
+                </div>
+        
+                <div class="col-12 col-md-6 col-lg-3 p-5" style="background-color: lightgrey;">
+                    <a href="https://cookidoo.pt/recipes/recipe/pt-PT/r616775" target="_blank">
+                        <h5>Granola integral com nozes</h5>
+                        <img src="{% static 'images/sm.png' %}" alt="" width="100%">
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 p-5" style="background-color: whitesmoke;">
+                    <a href="https://cookidoo.pt/recipes/recipe/pt-PT/r773601" target="_blank">
+                        <h5>Manteiga de caju com cacau</h5>
+                        <img src="{% static 'images/sm.png' %}" alt="" width="100%">
+                    </a>
+                </div>
+        
+                <div class="col-12 col-md-6 col-lg-3 p-5" style="background-color: lightgrey;">
+                    <a href="https://cookidoo.pt/recipes/recipe/pt-PT/r139621" target="_blank">
+                        <h5>Azeite de citrinos</h5>
+                        <img src="{% static 'images/sm.png' %}" alt="" width="100%">
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 p-5" style="background-color: whitesmoke;">
+                    <a href="https://cookidoo.pt/recipes/recipe/pt-PT/r131748" target="_blank">
+                        <h5>Granola para os mais novos</h5>
+                        <img src="{% static 'images/sm.png' %}" alt="" width="100%">
+                    </a>
+                </div>
+                
+                <div class="col-12 col-md-6 col-lg-3 p-5" style="background-color: lightgrey;">
+                    <a href="https://cookidoo.pt/recipes/recipe/pt-PT/r61333" target="_blank">
+                        <h5>Doce de Morango e Maçã</h5>
+                        <img src="{% static 'images/sm.png' %}" alt="" width="100%">
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 p-5" style="background-color: whitesmoke;">
+                    <a href="https://cookidoo.pt/recipes/recipe/pt-PT/r131747" target="_blank">
+                        <h5>Bolachas - Chocolate, Arandos e Laranja</h5>
+                        <img src="{% static 'images/sm.png' %}" alt="" width="100%">
+                    </a>
+                </div>
+        
+                <div class="col-12 col-md-6 col-lg-3 p-5" style="background-color: lightgrey;">
+                    <a href="https://cookidoo.pt/recipes/recipe/pt-PT/r215650" target="_blank">
+                        <h5>Vinagreta de Ervas</h5>
+                        <img src="{% static 'images/sm.png' %}" alt="" width="100%">
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 p-5" style="background-color: whitesmoke;">
+                    <a href="https://cookidoo.pt/recipes/recipe/pt-PT/r40977" target="_blank">
+                        <h5>Marmelada de Maçã Reineta</h5>
+                        <img src="{% static 'images/sm.png' %}" alt="" width="100%">
+                    </a>
+                </div>
+        
+                <div class="col-12 col-md-6 col-lg-3 p-5" style="background-color: lightgrey;">
+                    <a href="https://cookidoo.pt/recipes/recipe/pt-PT/r49598" target="_blank">
+                        <h5>Barras de Cereais e Maçã</h5>
+                        <img src="{% static 'images/sm.png' %}" alt="" width="100%">
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 p-5" style="background-color: whitesmoke;">
+                    <a href="https://cookidoo.pt/recipes/recipe/pt-PT/r750863" target="_blank">
+                        <h5>Bolachas de quase tudo</h5>
+                        <img src="{% static 'images/sm.png' %}" alt="" width="100%">
+                    </a>
+                </div>
+            </div>
+        </div>
+                
+		<div class="tab-pane fade" id="mandolina" role="tabpanel" aria-labelledby="mandolina-tab">
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-3 p-5" style="background-color: whitesmoke;">
+                    <a href="https://cookidoo.pt/recipes/recipe/pt-PT/r803006" target="_blank">
+                        <h5>Buddha bowl com frango</h5>
+                        <img src="{% static 'images/sm.png' %}" alt="" width="100%">
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 p-5" style="background-color: lightgrey;">
+                    <a href="https://cookidoo.pt/recipes/recipe/pt-PT/r803009" target="_blank">
+                        <h5>Galette de ratatouille</h5>
+                        <img src="{% static 'images/sm.png' %}" alt="" width="100%">
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 p-5" style="background-color: whitesmoke;">
+                    <a href="https://cookidoo.pt/recipes/recipe/pt-PT/r803282" target="_blank">
+                        <h5>Clafoutis de ameixa</h5>
+                        <img src="{% static 'images/sm.png' %}" alt="" width="100%">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content%}

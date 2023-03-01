@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Códigos para lojas</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="SUBMIT">
+  </form>
+  {% if storecodes %}
+    <p>{{ storecodes }} Códigos gerados com sucesso... </p>
+    <p> Total de códigos {{ unused_codes }} disponiveis... </p>
+  {% endif %}
+{% endblock %}
