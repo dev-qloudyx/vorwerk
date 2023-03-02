@@ -3,17 +3,6 @@
 {% load static %}
 
 {% block content%}
-<style>
-.row.display-flex {
-  display: flex;
-  flex-wrap: wrap;
-}
-.row.display-flex > [class*='col-'] {
-  display: flex;
-  flex-direction: column;
-}
-</style>
-
 <div class="row">
     <div class="col-12 p-5">
         <div>
@@ -22,17 +11,16 @@
     </div>
     {% for local in locais %}
     <div class="col-12 col-md-6 col-lg-4 col-xl-3 px-4 py-4" style="background-color: whitesmoke;">
-        <h5>{{ local.nome }}</h5>
-        <p>Morada: {{ local.enderecoum }}
+        <h5 style="color: #009a3b">{{ local.nome }}</h5>
+        <p>{{ local.enderecoum }}
         {% if local.enderecodois %} 
         , {{ local.enderecodois }}
-        {% endif %}
-        </p>
-        <p>Cód. Postal: {{ local.codigopostal }}</p>
-        <p>Cidade: {{ local.cidade }}</p>
+        {% endif %} <br>
+        Cód. Postal: {{ local.codigopostal }} <br>
+        Cidade: {{ local.cidade }}</p>
         <p>{{ local.x }}</p>
-        <a class="btn btn-outline-info" href="https://www.waze.com/ul?ll={{ local.latitude }}00%2C{{ local.longitude }}00&navigate=yes&zoom=17" target="_blank"><b>Waze</b></a>
-        <a class="btn btn-outline-info" href="https://www.google.com/maps/search/?api=1&query={{ local.latitude }}%2C{{ local.longitude }}" target="_blank"><b>Google Maps</b></a>
+        <a class="btn btn-outline-info" href="https://www.waze.com/ul?ll={{ local.latitude }}00%2C{{ local.longitude }}00&navigate=yes&zoom=17" target="_blank"><i class="fab fa-waze"></i></a>
+        <a class="btn btn-outline-info" href="https://www.google.com/maps/search/?api=1&query={{ local.latitude }}%2C{{ local.longitude }}" target="_blank"><i class="fas fa-map-marker-alt"></i></a>
     </div>
     {% endfor %}
 </div>
