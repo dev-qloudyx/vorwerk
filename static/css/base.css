@@ -374,7 +374,7 @@ div.navbar-collapse {
   transition: transform .5s,box-shadow .5s ease-in-out;
 }
 
-.heroimg > h4 {
+.heroimg > div > h4 {
   color: #009a3b;
 }
 

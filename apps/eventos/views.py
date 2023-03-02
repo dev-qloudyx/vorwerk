@@ -88,7 +88,7 @@ def receitas(request):
     return render(request, 'eventos/receitas.html',
                     context={'title':'Receitas'})
 
-@login_required
+# @login_required
 def generate_bbcode(request):
     if request.method == 'POST':
         form = GenerateBBCodeForm(request.POST)
