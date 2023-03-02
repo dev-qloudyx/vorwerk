@@ -19,9 +19,9 @@
         </p>
         <p>Cód. Postal: {{ local.codigopostal }}</p>
         <p>Cidade: {{ local.cidade }}</p>
-        
-        <a class="btn btn-outline-info" href="https://www.waze.com/ul?ll={{ coo1 }}00%2C{{ coo2 }}00&navigate=yes&zoom=17" target="_blank"><b>Waze</b></a>
-        <a class="btn btn-outline-info" href="https://www.google.com/maps/search/?api=1&query={{ coo1 }}%2C{{ coo2 }}" target="_blank"><b>Google Maps</b></a>
+        <p>{{ local.x }}</p>
+        <a class="btn btn-outline-info" href="https://www.waze.com/ul?ll={{ local.latitude }}00%2C{{ local.longitude }}00&navigate=yes&zoom=17" target="_blank"><b>Waze</b></a>
+        <a class="btn btn-outline-info" href="https://www.google.com/maps/search/?api=1&query={{ local.latitude }}%2C{{ local.longitude }}" target="_blank"><b>Google Maps</b></a>
     </div>
     {% endfor %}
 </div>
