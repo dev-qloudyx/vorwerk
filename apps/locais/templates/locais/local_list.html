@@ -3,17 +3,28 @@
 {% load static %}
 
 {% block content%}
+<style>
+.row.display-flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+.row.display-flex > [class*='col-'] {
+  display: flex;
+  flex-direction: column;
+}
+</style>
+
 <div class="row">
-    <div class="col-12 p-5" style="background-color: whitesmoke;">
+    <div class="col-12 p-5">
         <div>
             Descubra a loja mais próxima de si.
         </div>
     </div>
     {% for local in locais %}
-    <div class="col-12 col-md-6 col-lg-4 col-xl-3 px-5 py-4" style="background-color: whitesmoke;">
+    <div class="col-12 col-md-6 col-lg-4 col-xl-3 px-4 py-4" style="background-color: whitesmoke;">
         <h5>{{ local.nome }}</h5>
         <p>Morada: {{ local.enderecoum }}
-        {% if local.enderecodois %}
+        {% if local.enderecodois %} 
         , {{ local.enderecodois }}
         {% endif %}
         </p>

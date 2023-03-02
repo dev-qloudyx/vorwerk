@@ -136,9 +136,9 @@ body {
 
 p {
   font-family: 'Poppins', sans-serif;
-  font-size: 1.1em;
+  font-size: 0.9em;
   font-weight: 300;
-  line-height: 1.7em;
+  line-height: 1.3em;
   color: #999;
 }
 
@@ -357,6 +357,11 @@ div.navbar-collapse {
 .collapsing {
   display: none;
   transition: none;
+}
+
+.nav-tabs {
+  border-bottom: none;
+  margin-left: -15px;
 }
 
 /* ---------------------------------------------------
@@ -607,7 +612,7 @@ table.table thead th.desc.orderable::after {
 }
 
 .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
-  color: #dd6f08;
+  color: #01a28d;
   background-color: #fff;
   border-color: #dee2e6 #dee2e6 #fff;
 }
