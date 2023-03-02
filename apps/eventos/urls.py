@@ -3,6 +3,7 @@ from .views import detalhe_inscricao, home, receitas, evento, NovaInscricao
 
 from apps.eventos.code_gen import CodeGeneration
 from .views import BBCodeViewSet, detalhe_inscricao, evento, NovaInscricao, gen_storecodes, generate_bbcode, select_storecodes
+
 app_name = "eventos"
 
 urlpatterns = [
