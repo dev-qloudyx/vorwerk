@@ -364,6 +364,25 @@ div.navbar-collapse {
   margin-left: -15px;
 }
 
+#despensa > div > div:nth-child(1) > div:hover {
+  box-shadow: 0 2px 4px 0 rgb(51 51 51 / 15%);
+}
+
+.heroimg {
+  border-radius: 18px;
+  border: 1px solid #b1b2b3;
+  transition: transform .5s,box-shadow .5s ease-in-out;
+}
+
+.heroimg > h4 {
+  color: #009a3b;
+}
+
+/* .card-img-top {
+  width: 100%;
+  height: auto;
+} */
+
 /* ---------------------------------------------------
   CONTENT STYLE
 ----------------------------------------------------- */
