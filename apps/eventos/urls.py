@@ -6,7 +6,7 @@ from .views import BBCodeViewSet, detalhe_inscricao, evento, NovaInscricao, gen_
 app_name = "eventos"
 
 urlpatterns = [
-    path('home/', home, name='home'),
+    path('', home, name='home'),
     path('receitas/', receitas, name='receitas'),
     path('inscricao/', detalhe_inscricao, name='inscricao'),
     path('nova-inscricao/', NovaInscricao.as_view(), name='nova-inscricao'),
