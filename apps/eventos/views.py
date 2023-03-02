@@ -89,7 +89,6 @@ def receitas(request):
                     context={'title':'Receitas'})
 
 @login_required
-@role_required(ADMIN)
 def generate_bbcode(request):
     if request.method == 'POST':
         form = GenerateBBCodeForm(request.POST)
