@@ -196,10 +196,10 @@ LOGGING = {
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-LOGIN_REDIRECT_URL = 'users:profile'
+LOGIN_REDIRECT_URL = 'eventos:home'
 # LOGIN_REDIRECT_URL = 'users:redirect-login'
 LOGIN_URL = 'users:login'
-LOGOUT_REDIRECT_URL = 'users:login'
+LOGOUT_REDIRECT_URL = 'eventos:home'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'

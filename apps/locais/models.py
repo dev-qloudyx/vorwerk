@@ -13,3 +13,6 @@ class Local(models.Model):
     
     def __str__(self):
         return f'{self.nome} - {self.cidade}'
+
+class Bimby(models.Model):
+    nome = models.CharField(max_length=30)

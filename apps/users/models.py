@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from PIL import Image
 from . import roles
+from apps.locais.models import Local, Bimby
 
 class UserManager(BaseUserManager):
     def create_user(self, email, username, password=None):
@@ -35,6 +36,11 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser):
     email = models.EmailField(max_length=255, unique=True)
     username = models.CharField(max_length=30, unique=True)
+    first_name = models.CharField(max_length=80, blank=True, null=True)
+    last_name = models.CharField(max_length=80, blank=True, null=True)
+    loja = models.ForeignKey(Local, null=True, on_delete=models.SET_NULL)
+    bimby = models.ForeignKey(Bimby, null=True, on_delete=models.SET_NULL)
+    aceito = models.BooleanField(default=False)
     date_joined = models.DateTimeField(verbose_name='date joined', auto_now_add=True)
     role = models.PositiveSmallIntegerField(
         choices=roles.TYPES, default=roles.USER)
@@ -65,20 +71,11 @@ class User(AbstractBaseUser):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    full_name = models.CharField(max_length=80)
-    cidade = models.CharField(max_length=30)
-    codigopostal = models.CharField(max_length=8)
-    about = models.TextField()
-    image = models.ImageField(
-        default='smiley.png', upload_to='profile_pics')
+    # first_name = models.CharField(max_length=80)
+    # last_name = models.CharField(max_length=80)
+    # loja = models.ForeignKey(Local, null=True, on_delete=models.SET_NULL)
+    # bimby = models.ForeignKey(Bimby, null=True, on_delete=models.SET_NULL)
+    # aceito = models.BooleanField(default=False)
     
     def __str__(self):
         return f'{self.user.username} Profile'
-
-    def save(self, *args, **kwargs):
-        super().save()
-        img = Image.open(self.image.path)
-        if img.height > 300 or img.width > 300:
-            output_size = (300, 300)
-            img.thumbnail(output_size)
-            img.save(self.image.path)

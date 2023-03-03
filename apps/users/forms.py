@@ -8,7 +8,7 @@ class UserRegisterForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ['email', 'username', 'role']
+        fields = ['email', 'username', 'first_name', 'last_name', 'bimby', 'aceito', 'role']
         help_texts = {
             'password1': '',
             'password2': ''
@@ -25,6 +25,15 @@ class UserRegisterForm(UserCreationForm):
         self.fields['password1'].help_text = ''
         self.fields['password2'].help_text = ''
 
+class ProfileRegisterForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['user']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['user'].required = False
+
 
 class UserUpdateForm(forms.ModelForm):
     email = forms.EmailField()
@@ -32,9 +41,3 @@ class UserUpdateForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['email', 'username']
-
-
-class ProfileUpdateForm(forms.ModelForm):
-    class Meta:
-        model = Profile
-        fields = ['image', 'full_name', 'about']
