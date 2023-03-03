@@ -361,7 +361,7 @@ div.navbar-collapse {
 
 .nav-tabs {
   border-bottom: none;
-  margin-left: -15px;
+  margin-left: 10px;
 }
 
 #despensa > div > div:nth-child(1) > div:hover {
@@ -642,4 +642,12 @@ table.table thead th.desc.orderable::after {
   border: 1px solid transparent;
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
+}
+.nav-tabs .nav-link.active {
+  color: #fff;
+  background-color: #01a28d;
+}
+
+.nav-tabs .nav-link {
+  background-color: #fff;
 }
