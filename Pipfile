@@ -10,6 +10,9 @@ pillow = "*"
 psycopg2-binary = "*"
 djangorestframework = "*"
 requests = "*"
+gunicorn = "*"
+openpyxl = "*"
+
 crispy-bootstrap4 = "*"
 
 [dev-packages]

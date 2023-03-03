@@ -63,7 +63,7 @@ class CodeGeneration:
         # Define the length and characters to use for the BBCode
         code_length = 5
         characters = string.digits + string.ascii_uppercase
-        
+
         # Check if the provided code exists in StoreCode table
         store_code = StoreCode.objects.filter(code=code).first()
         if store_code:
@@ -82,15 +82,25 @@ class CodeGeneration:
                         new_code = None
                 
                 # Create a new BBCode object for this StoreCode
-                bb_code = BBCode.objects.create(code=new_code, store_code=store_code, user=request.user)
+                bb_code = BBCode(code=new_code, store_code=store_code, user=request.user)
+                
+                # Set the 'valid' field based on the count of existing BBCode objects
+                if BBCode.objects.count() <= 5000:
+                    bb_code.valid = True
+                
+                # Save the BBCode object
+                bb_code.save()
+                
                 # Mark the StoreCode as redeemed
                 store_code.is_redeemed = True
                 store_code.save()
+                
                 # Return a success message with the BBCode generated
                 return "Generated BBCode: {}".format(bb_code.code)
         else:
             # If the provided code doesn't exist in StoreCode table, return an error message
             return "Code not valid"
+
 
     def select_codes(request, num_codes, eventid):
         
@@ -120,15 +130,18 @@ class CodeGeneration:
 
         return selected_codes
 
-    def send_message(request,**kwargs):
-    # get the data from the request object
-        sender=""
-        msisdn=""
-        priority=1
+    def send_message(request, data_dict, **kwargs):
+        
+        # get the data from the request object
+        sender="Qloudyx"
+        msisdn=data_dict['From']
+        priority=50
         messageText=""
-        workingDays="g"
-        isFlash=""
+        workingDays=True
+        isFlash=False
 
+        
+        
         # construct the payload for the API endpoint
         payload = {
             'username': "Qloudyx",
@@ -139,24 +152,37 @@ class CodeGeneration:
             'messageText':messageText,
             'workingDays': workingDays,
             'isFlash': isFlash
-            # and so on for other parameters
         }
+
+        headers = {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Content-Length': str(len(payload))
+        }
+
+
 
         #Check if a message with the given Msg(BBCODE) already exists  
         #If it doesn't exist, save the message
         try:
-            BBCode.objects.get(code=request.data.get('Msg'))
-            # make a POST request to the API endpoint
-            payload['messageText'] = "Código BB válido"
-            response = requests.post('https://apitest.usendit.pt/v2/remoteusendit.asmx/SendMessage', data=payload)
+            bb_code = BBCode.objects.get(code=request.data.get('Msg'))
+            if bb_code.valid:
+                # BBCode object with the given code exists and is valid
+                payload['messageText'] = "Obrigado, retire seu prémio..."
+                print(payload['messageText'], payload)
+            else:
+                # BBCode object with the given code exists but is invalid
+                payload['messageText'] = "Obrigado, mas todos os prémios já foram retirados..."
+                print(payload['messageText'], payload)
+            #response = requests.post('https://api.usendit.pt/v2/remoteusendit.asmx/SendMessage', data=payload, headers=headers)
             # If a BBCode object with the given code exists, return a 200 response with "OK" result
         except BBCode.DoesNotExist:
-                # If a BBCode object with the given code doesn't exist, delete the message and return a 404 response with "NOK" result
-            payload['messageText'] = "Código BB inválido"
-            response = requests.post('https://apitest.usendit.pt/v2/remoteusendit.asmx/SendMessage', data=payload)
+            # BBCode object with the given code doesn't exist
+            payload['messageText'] = "Código inválido"
+            print(payload['messageText'], payload)
+            #response = requests.post('https://api.usendit.pt/v2/remoteusendit.asmx/SendMessage', data=payload, headers=headers)
 
-        return JsonResponse({
-            'status_code': response.status_code,
-            'content': response.content.decode()
-        })
+        # return JsonResponse({
+        #     'status_code': response.status_code,
+        #     'content': response.content.decode()
+        # })
         

@@ -1,11 +1,11 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "dea91fb787606935046056ed874c3024857b086629aa6e656e0bf85d7c24af7f"
+            "sha256": "80143b0a9e01f0a83a17114ebc95d7998c9cba3298bd2b5f2fd417184584e09d"
         },
         "pipfile-spec": 6,
         "requires": {
-            "python_version": "3.9"
+            "python_version": "3.10"
         },
         "sources": [
             {
@@ -125,14 +125,6 @@
             ],
             "version": "==3.0.1"
         },
-        "crispy-bootstrap4": {
-            "hashes": [
-                "sha256:5241ab1dc2188c95560aa786439bcbedec7416e6b0f5a52dded82380810367ec",
-                "sha256:f18386c4d96180c1bb1212487d6e8f5a3dd1a9bb58d3032183973d4d130b55f9"
-            ],
-            "index": "pypi",
-            "version": "==2022.1"
-        },
         "django": {
             "hashes": [
                 "sha256:44f714b81c5f190d9d2ddad01a532fe502fa01c4cb8faf1d081f4264ed15dcd8",
@@ -157,6 +149,22 @@
             "index": "pypi",
             "version": "==3.14.0"
         },
+        "et-xmlfile": {
+            "hashes": [
+                "sha256:8eb9e2bc2f8c97e37a2dc85a09ecdcdec9d8a396530a6d5a33b30b9a92da0c5c",
+                "sha256:a2ba85d1d6a74ef63837eed693bcb89c3f752169b0e3e7ae5b16ca5e1b3deada"
+            ],
+            "markers": "python_version >= '3.6'",
+            "version": "==1.1.0"
+        },
+        "gunicorn": {
+            "hashes": [
+                "sha256:9dcc4547dbb1cb284accfb15ab5667a0e5d1881cc443e0677b4882a4067a807e",
+                "sha256:e0a968b5ba15f8a328fdfd7ab1fcb5af4470c28aaf7e55df02a99bc13138e6e8"
+            ],
+            "index": "pypi",
+            "version": "==20.1.0"
+        },
         "idna": {
             "hashes": [
                 "sha256:814f528e8dead7d329833b91c5faa87d60bf71824cd12a7530b5526063d02cb4",
@@ -164,6 +172,14 @@
             ],
             "markers": "python_version >= '3.5'",
             "version": "==3.4"
+        },
+        "openpyxl": {
+            "hashes": [
+                "sha256:a0266e033e65f33ee697254b66116a5793c15fc92daf64711080000df4cfe0a8",
+                "sha256:f06d44e2c973781068bce5ecf860a09bcdb1c7f5ce1facd5e9aa82c92c93ae72"
+            ],
+            "index": "pypi",
+            "version": "==3.1.1"
         },
         "pillow": {
             "hashes": [
@@ -339,6 +355,14 @@
             ],
             "index": "pypi",
             "version": "==2.28.2"
+        },
+        "setuptools": {
+            "hashes": [
+                "sha256:e5fd0a713141a4a105412233c63dc4e17ba0090c8e8334594ac790ec97792330",
+                "sha256:f106dee1b506dee5102cc3f3e9e68137bbad6d47b616be7991714b0c62204251"
+            ],
+            "markers": "python_version >= '3.7'",
+            "version": "==67.4.0"
         },
         "sqlparse": {
             "hashes": [

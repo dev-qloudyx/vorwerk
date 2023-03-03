@@ -20,10 +20,12 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from rest_framework.parsers import JSONParser, FormParser, MultiPartParser
 from .serializers import MessageSerializer
 from rest_framework import status
 from apps.users.roles import ADMIN, role_required
 from django.contrib.auth.decorators import login_required
+from django.core.files.storage import default_storage
 
 def detalhe_inscricao(request):
     user = request.user
@@ -92,7 +94,7 @@ def promos(request):
     return render(request, 'eventos/promos.html',
                     context={'title':'Promoções'})
 
-# @login_required
+@login_required
 def generate_bbcode(request):
     if request.method == 'POST':
         form = GenerateBBCodeForm(request.POST)
@@ -142,8 +144,6 @@ def select_storecodes(request):
         form = SelectCodesForm()
     return render(request, 'eventos/select_codes.html', {'form': form})
 
-from django.core.files.storage import default_storage
-
 def download_codes(request, selected_codes):
     # Generate a unique filename based on the current timestamp
     characters = string.digits + string.ascii_uppercase
@@ -165,20 +165,58 @@ def download_codes(request, selected_codes):
     return file_url
 
 
+def import_store_codes(request):
+    from openpyxl import load_workbook
+    
+    if request.method == 'POST':
+        form = StoreCodesForm(request.POST, request.FILES)
+        if form.is_valid():
+            event = form.cleaned_data['event']
+            excel_file = request.FILES['excel_file']
+
+            # Load the Excel file and get the first sheet
+            workbook = load_workbook(excel_file)
+            sheet = workbook.active
+
+            # Read the codes from the sheet
+            codes = [str(cell.value).strip() for cell in sheet['A'] if cell.value and len(str(cell.value).strip()) <= 8]
+
+
+            # Create StoreCode objects for the codes
+            for code in codes:
+                StoreCode.objects.create(code=code, event=event)
+
+            # Redirect to the success page
+            num_codes = StoreCode.objects.filter(event=event).count()
+            return render(request, 'eventos/import_store_codes.html', {'num_codes': num_codes, 'form': form})
+    else:
+        form = StoreCodesForm()
+    return render(request, 'eventos/import_store_codes.html', {'form': form})
+ 
+
 
 class BBCodeViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]  # Set permission for this viewset to require authentication (Is set to Basic Auth)
     serializer_class = MessageSerializer  # Set the serializer class for the Message model
+    parser_classes = [JSONParser, FormParser, MultiPartParser]
 
     def create(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)  # Get the serializer for the incoming request data
+        print(request.data)
+        data_dict = dict(request.data)  # Convert the QueryDict object to a dictionary
+        for key in data_dict:
+            data_dict[key] = str(data_dict[key][0])  # Convert all values to strings
+        print(data_dict)
+        serializer = self.get_serializer(data=data_dict)  # Get the serializer for the incoming request data
         check_serializer = serializer.is_valid(raise_exception=False)  # Validate the incoming data
 
         if not check_serializer:  # If validation fails, return a 400 response
+            print(serializer.errors)
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         else:
             serializer.save()
+            CodeGeneration.send_message(request,data_dict,**kwargs)
             #task = CodeGeneration.send_message(request,**kwargs)
-            return Response('OK', content_type='text/plain', status=200)
+            return HttpResponse(b'OK', content_type='text/plain', status=status.HTTP_200_OK)
+
 
 
