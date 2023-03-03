@@ -21,6 +21,7 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('apps.eventos.urls', namespace='eventos')),
+    path('eventos/', include('apps.eventos.urls', namespace='apieventos')),
     path('locais/', include('apps.locais.urls', namespace='locais')),
     path('users/', include('apps.users.urls', namespace='users'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # media files
