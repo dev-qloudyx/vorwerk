@@ -24,6 +24,10 @@ class UserRegisterForm(UserCreationForm):
         self.fields['password2'].label = ''
         self.fields['password1'].help_text = ''
         self.fields['password2'].help_text = ''
+        self.fields['first_name'].required = True
+        self.fields['last_name'].required = True
+        self.fields['aceito'].required = True
+
 
 class ProfileRegisterForm(forms.ModelForm):
     class Meta:
@@ -41,3 +45,8 @@ class UserUpdateForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['email', 'username', 'first_name', 'last_name', 'bimby', 'aceito']
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['first_name'].required = True
+        self.fields['last_name'].required = True
