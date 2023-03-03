@@ -80,32 +80,32 @@ footer {
 }
 
 .btn {
-  color:#01a28d;
-  border-color: #01a28d;
+  color:#046d84;
+  border-color: #046d84;
   background-color: white;
 }
 
 .btn-rev {
   color: white;
-  border: #01a28d;
-  background-color: #01a28d;
+  border: #046d84;
+  background-color: #046d84;
 }
 
 .btn:hover {
   color:white;
-  border-color: #01a28d;
-  background-color: #01a28d;
+  border-color: #046d84;
+  background-color: #046d84;
 }
 
 .btn:active {
-  color:#01a28d;
-  border-color: #01a28d;
+  color:#046d84;
+  border-color: #046d84;
 }
 
 .btn[aria-expanded="true"]{
   color:white;
-  border-color: #01a28d;
-  background-color: #01a28d;
+  border-color: #046d84;
+  background-color: #046d84;
 }
 
 .btn-info {
@@ -115,8 +115,8 @@ footer {
 
 .btn-selected {
   color:white;
-  border-color: #01a28d;
-  background-color: #01a28d;
+  border-color: #046d84;
+  background-color: #046d84;
 }
 
 .btn-outline-danger {
@@ -155,7 +155,6 @@ a:focus {
   background: #fff;
   border: none;
   border-radius: 0;
-  margin-bottom: 20px;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
@@ -335,7 +334,7 @@ a.article:hover {
 
 li.menu-item {
   color: white;
-  background-color: #01a28d;
+  background-color: #046d84;
   border-radius: 5px;
   /* padding: 0.25rem 0.5rem; */
   margin-top: 0;
@@ -361,7 +360,7 @@ div.navbar-collapse {
 
 .nav-tabs {
   border-bottom: none;
-  margin-left: -15px;
+  margin-left: 10px;
 }
 
 #despensa > div > div:nth-child(1) > div:hover {
@@ -375,7 +374,7 @@ div.navbar-collapse {
 }
 
 .heroimg > div > h4 {
-  color: #009a3b;
+  color: #e87e19;
 }
 
 /* .card-img-top {
@@ -389,7 +388,7 @@ div.navbar-collapse {
 
 #content {
   width: 100%;
-  padding: 1rem;
+  padding: 0px 1rem;
   min-height: 100vh;
   transition: all 0.3s;
   /* margin-left: 220px;  */
@@ -402,7 +401,7 @@ div.navbar-collapse {
   li.menu-item,
   .menu-user {
     font-size: 0.9em;
-    background-color: #01a28d;
+    background-color: #046d84;
     width: 100%;
     line-height: 1.3rem;
     border-radius: 0;
@@ -411,7 +410,7 @@ div.navbar-collapse {
     color: white;
   }
   div.navbar-collapse {
-    background-color: #01a28d;
+    background-color: #046d84;
   }
   #navbarSupportedContent {
     position: absolute;
@@ -631,7 +630,7 @@ table.table thead th.desc.orderable::after {
 }
 
 .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
-  color: #01a28d;
+  color: #046d84;
   background-color: #fff;
   border-color: #dee2e6 #dee2e6 #fff;
 }
@@ -642,4 +641,12 @@ table.table thead th.desc.orderable::after {
   border: 1px solid transparent;
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
+}
+.nav-tabs .nav-link.active {
+  color: #fff;
+  background-color: #046d84;
+}
+
+.nav-tabs .nav-link {
+  background-color: #fff;
 }

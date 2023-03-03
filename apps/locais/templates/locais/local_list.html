@@ -4,23 +4,24 @@
 
 {% block content%}
 <div class="row">
-    <div class="col-12 p-5">
-        <div>
-            Descubra a loja mais próxima de si.
-        </div>
+    <div class="col-12 mx-2 p-5 text-left">
+        <h4><b> Descubra a loja mais próxima de si. </b></h4>
     </div>
+
     {% for local in locais %}
-    <div class="col-12 col-md-6 col-lg-4 col-xl-3 px-4 py-4" style="background-color: whitesmoke;">
-        <h5 style="color: #009a3b">{{ local.nome }}</h5>
-        <p>{{ local.enderecoum }}
-        {% if local.enderecodois %} 
-        , {{ local.enderecodois }}
-        {% endif %} <br>
-        Cód. Postal: {{ local.codigopostal }} <br>
-        Cidade: {{ local.cidade }}</p>
-        <p>{{ local.x }}</p>
-        <a class="btn btn-outline-info" href="https://www.waze.com/ul?ll={{ local.latitude }}00%2C{{ local.longitude }}00&navigate=yes&zoom=17" target="_blank"><i class="fab fa-waze"></i></a>
-        <a class="btn btn-outline-info" href="https://www.google.com/maps/search/?api=1&query={{ local.latitude }}%2C{{ local.longitude }}" target="_blank"><i class="fas fa-map-marker-alt"></i></a>
+    <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-3">
+        <div class="p-4" style="border-radius: 18px; border: 1px solid #046d84;">
+            <h5 style="color: #e87e19">{{ local.nome }}</h5>
+            <p>{{ local.enderecoum }}
+            {% if local.enderecodois %} 
+            , {{ local.enderecodois }}
+            {% endif %} <br>
+            Cód. Postal: {{ local.codigopostal }} <br>
+            Cidade: {{ local.cidade }}</p>
+            <p>{{ local.x }}</p>
+            <a class="btn btn-outline-info" href="https://www.waze.com/ul?ll={{ local.latitude }}00%2C{{ local.longitude }}00&navigate=yes&zoom=17" target="_blank"><i class="fab fa-waze"></i></a>
+            <a class="btn btn-outline-info" href="https://www.google.com/maps/search/?api=1&query={{ local.latitude }}%2C{{ local.longitude }}" target="_blank"><i class="fas fa-map-marker-alt"></i></a>
+        </div>
     </div>
     {% endfor %}
 </div>
