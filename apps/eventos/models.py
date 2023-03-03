@@ -38,7 +38,7 @@ class Inscricao(models.Model):
         return f'{self.subevento.evento} - {self.user}'
 
 class StoreCode(models.Model):
-    code = models.CharField(max_length=5, unique=True)
+    code = models.CharField(max_length=10, unique=True)
     is_redeemed = models.BooleanField(default=False)
     picked = models.BooleanField(default=False)
     event = models.ForeignKey(Evento, on_delete=models.CASCADE, blank=True, null=True, related_name='codes')
@@ -50,6 +50,7 @@ class BBCode(models.Model):
     store_code = models.OneToOneField(StoreCode, on_delete=models.CASCADE, related_name='bbcode')
     code = models.CharField(max_length=7, unique=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    valid = models.BooleanField(default=False)
     
     def __str__(self):
         return f'{self.code} - {self.store_code}'
@@ -60,17 +61,11 @@ class Message(models.Model):
     To = models.CharField(max_length=255)
     Prefix = models.CharField(max_length=255)
     Msg = models.CharField(max_length=255)
-    MCC = models.CharField(max_length=255)
-    MNC = models.CharField(max_length=255)
-    ReceivedDatetime = models.DateTimeField()
+    mcc = models.CharField(max_length=255)
+    mnc = models.CharField(max_length=255)
+    ReceivedDatetime = models.CharField(max_length=255)
     SegmentsTotalNumber = models.CharField(max_length=255)
 
     def __str__(self):
         return f'{self.MsgId} - {self.Msg} - {self.ReceivedDatetime}'
     
-    def save(self, *args, **kwargs):
-        if isinstance(self.ReceivedDatetime, str):
-            date_string = self.ReceivedDatetime
-            date_format = '%d-%m-%Y %H:%M:%S'
-            self.ReceivedDatetime = datetime.strptime(date_string, date_format)
-        super().save(*args, **kwargs)

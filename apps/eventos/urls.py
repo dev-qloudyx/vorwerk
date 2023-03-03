@@ -2,7 +2,7 @@ from django.urls import path, reverse_lazy
 from .views import detalhe_inscricao, home, receitas, promos,  evento, NovaInscricao
 
 from apps.eventos.code_gen import CodeGeneration
-from .views import BBCodeViewSet, detalhe_inscricao, evento, NovaInscricao, gen_storecodes, generate_bbcode, select_storecodes
+from .views import BBCodeViewSet, detalhe_inscricao, evento, NovaInscricao, gen_storecodes, generate_bbcode, select_storecodes, import_store_codes
 
 app_name = "eventos"
 
@@ -18,5 +18,6 @@ urlpatterns = [
     path('generate-list-codes/', select_storecodes, name='generate_list_code'),
     path('list-duplicate-store-codes/', CodeGeneration.list_duplicate_store_codes, name='list_duplicate_store_codes'),
     path('code/', BBCodeViewSet.as_view({'post': 'create'})),
+    path('import-store-codes/', import_store_codes, name='import_store_codes'),
     
 ]
