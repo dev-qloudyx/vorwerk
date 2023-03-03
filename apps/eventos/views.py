@@ -88,6 +88,10 @@ def receitas(request):
     return render(request, 'eventos/receitas.html',
                     context={'title':'Receitas'})
 
+def promos(request):
+    return render(request, 'eventos/promos.html',
+                    context={'title':'Promoções'})
+
 # @login_required
 def generate_bbcode(request):
     if request.method == 'POST':

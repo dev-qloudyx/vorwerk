@@ -12,7 +12,7 @@
 <body>
     <div class="container-fluid px-0">
         <!-- Top Navbar -->
-        <nav class="navbar navbar-expand-lg mx-3 mt-3 p-0">
+        <nav class="navbar navbar-expand-lg mx-0 mt-0 px-4 pt-3">
             <a class="navbar-brand ml-2 mr-4" href="{% url 'eventos:home' %}"><img src="{% static 'images/bimby-logo.png' %}" alt="" style="width: 65%"></a>
             <a class="mr-4 ml-auto d-lg-none" href="{% url 'users:profile' %}">
                 <img class="rounded-circle mr-2" style="width: 35px; height: 35px;"
@@ -33,7 +33,7 @@
                     <a class="nav-link" href="{% url 'eventos:receitas' %}">Receitas</a>
                 </li>
                 <li class="nav-item menu-item mx-lg-1 mx-xl-4">
-                    <a class="nav-link" href="#">Descontos</a>
+                    <a class="nav-link" href="{% url 'eventos:promos' %}">Descontos</a>
                 </li>
                 <li class="nav-item menu-item mx-lg-1 mx-xl-4">
                     <a class="nav-link" href="{% url 'eventos:generate_bb_code' %}">Passatempo</a>
@@ -56,58 +56,9 @@
             {% endif %}
         </nav>
 
-        <!-- Sidebar  -->
-        <!-- <nav id="sidebar">
-            <div class="sidebar-header" style="text-align: center;">
-                <a href="#">APP</a>
-            </div>
-            <ul class="list-unstyled components">
-                <li>
-                    <a href="{% url 'users:register' %}">
-                        <i class="fas fa-user"></i>
-                        Registar
-                    </a>
-                </li>                
-            </ul>
-            <div class="d-none d-sm-none d-md-block" style="background-color: black;color: rgb(221, 221, 221); text-align: center; position:fixed; bottom: 0; text-align: center; width: 215px; font-size: 12px;">
-                <span style="color: white;">v. 23.02.01</span><br>
-                <a href="https://qloudyx.pt" target="_blank">
-                    &#169; {% now "Y" %}, eXcellerated by qloudyx.
-                </a>
-            </div>
-        </nav> -->
-
+        
         <!-- Page Content  -->
-
         <div id="content">
-            <!-- <button type="button" id="sidebarCollapse" style="margin-left: -30px; margin-top: -13px; position: absolute; border-radius: 0px; 
-                            background-color: transparent; border: none; color: #464646;
-                                font-size: 45px;">
-                <i class="fas fa-caret-right"></i>
-                <span></span>
-            </button> -->
-
-            <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid">
-                    <div>
-                        <a class="btn d-md-none" id="sidebarCollapse">
-                            <i class="fas fa-align-left"></i>
-                        </a>
-                        {% block nav %}{% endblock %}
-                    </div>
-                    <div>
-                        <a href="{% url 'users:profile' %}">
-                            <img class="rounded-circle" style="width: 35px; height: 35px;"
-                                src="{{ user.profile.image.url }}">
-                        </a>
-                        <a style="margin-right: 30px;" href="{% url 'users:profile' %}">{{ user.username }}</a>
-                        <button onclick="logOut()" class="btn btn-md"
-                            style="padding-left: 12px; padding-right: 12px;"><i class="fas fa-power-off"></i>
-                        </button>
-
-                    </div>
-                </div>
-            </nav> -->
             <div>
                 {% for message in messages %}
                 <div class="text-center alert alert-{{ message.tags }}">
