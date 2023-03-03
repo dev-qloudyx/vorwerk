@@ -36,8 +36,8 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser):
     email = models.EmailField(max_length=255, unique=True)
     username = models.CharField(max_length=30, unique=True)
-    first_name = models.CharField(max_length=80, blank=True, null=True)
-    last_name = models.CharField(max_length=80, blank=True, null=True)
+    first_name = models.CharField(max_length=80, blank=True, null=True, verbose_name="Nome")
+    last_name = models.CharField(max_length=80, blank=True, null=True, verbose_name="Apelido")
     loja = models.ForeignKey(Local, null=True, on_delete=models.SET_NULL)
     bimby = models.ForeignKey(Bimby, null=True, on_delete=models.SET_NULL)
     aceito = models.BooleanField(default=False)

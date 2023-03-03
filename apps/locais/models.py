@@ -16,3 +16,6 @@ class Local(models.Model):
 
 class Bimby(models.Model):
     nome = models.CharField(max_length=30)
+
+    def __str__(self):
+        return f'{self.nome}'

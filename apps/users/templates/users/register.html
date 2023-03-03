@@ -2,7 +2,7 @@
 {% load crispy_forms_tags %}
 
 {% block content%}
-<div class="row">
+<div class="row mt-4">
     <div class="col-12 col-lg-8 offset-lg-2">
         <div class="content-section">
             <form method="POST">
@@ -17,7 +17,7 @@
                     {{ form.aceito|as_crispy_field }}
                     {{ form.role.as_hidden }}
                 </fieldset>
-                <div class="form-group" style="text-align: right;">
+                <div class="form-group">
                     <button class="btn btn-outline-info" type="submit">Register</button>
                 </div>
             </form>

@@ -2,7 +2,7 @@
 {% load crispy_forms_tags %}
 
 {% block content%}
-<div class="row">
+<div class="row mt-4">
     <div class="col-12 col-lg-8 offset-lg-2">
         <div class="content-section">
             <form method="POST">
@@ -22,7 +22,7 @@
             </div>
             <div class="border-top pt-3">
                 <small class="text-muted">
-                    Forgot Your Password? <a href="{% url 'users:password_reset' %}">Reset Here</a>
+                    Esqueceu a palavra-passe? <a href="{% url 'users:password_reset' %}">Recupere aqui</a>
                 </small>
             </div>
         </div>

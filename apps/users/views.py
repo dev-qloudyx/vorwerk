@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.forms import PasswordResetForm
+from django.contrib.auth.views import PasswordResetCompleteView, PasswordResetDoneView
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy, reverse
 
@@ -52,3 +53,18 @@ def profile(request):
         'u_form': u_form,
     }
     return render(request, 'users/profile.html', context)
+
+
+class MyPasswordResetCompleteView(PasswordResetCompleteView):
+    def dispatch(self, request, *args, **kwargs):
+        response = super().dispatch(request, *args, **kwargs)
+        messages.success(request, 'A sua palavra-passe foi definida com sucesso \
+            Faça o login agora.')
+        return redirect('users:login')
+
+class MyPasswordResetDoneView(PasswordResetDoneView):
+    def dispatch(self, request, *args, **kwargs):
+        response = super().dispatch(request, *args, **kwargs)
+        messages.success(request, 'Um e-mail acabou de ser enviado com as \
+            instruções para redefinir a sua senha... Confirme, por favor.')
+        return redirect('users:login')
