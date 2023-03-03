@@ -2,6 +2,7 @@
 asgiref==3.6.0 ; python_version >= '3.7'
 certifi==2022.12.7 ; python_version >= '3.6'
 charset-normalizer==3.0.1
+crispy-bootstrap4==2022.1
 django==4.1.7
 django-crispy-forms==2.0
 djangorestframework==3.14.0
