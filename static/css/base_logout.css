@@ -146,3 +146,9 @@ table.table thead th.desc.orderable::after {
 .table-row {
   cursor: pointer;
 }
+
+.heroimgbox {
+  border-radius: 18px;
+  border: 1px solid #b1b2b3;
+  transition: transform .5s,box-shadow .5s ease-in-out;
+}
