@@ -19,7 +19,7 @@ def role_required(role):
             if request.user.role == role:
                 return func(request, *args, **kwargs)
             messages.error(request,
-                'Permission denied... You need to be an ADMIN!')
+                'Permissão negada... Tens de ser ADMIN!')
             return redirect('users:login')
         
         return _inner

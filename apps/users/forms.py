@@ -24,6 +24,7 @@ class UserRegisterForm(UserCreationForm):
         self.fields['password2'].label = ''
         self.fields['password1'].help_text = ''
         self.fields['password2'].help_text = ''
+        self.fields['email'].label = 'E-mail'
         self.fields['first_name'].required = True
         self.fields['last_name'].required = True
         self.fields['aceito'].required = True

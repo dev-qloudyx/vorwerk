@@ -22,7 +22,7 @@ def register(request):
                     email_template_name='users/password_define_email.txt',
                     html_email_template_name='users/password_define_email.html')
                 messages.success(request,
-                    f'Account created... "{email}" is now able to log in!')
+                    f'Conta criada... "{email}" está agora apto para fazer login!')
                 return redirect('users:login')
             else:
                 messages.error(request,
@@ -42,11 +42,11 @@ def profile(request):
         u_form = UserUpdateForm(request.POST, instance=request.user)
         if u_form.is_valid():
             u_form.save()
-            messages.success(request, 'Your account has been updated!')
+            messages.success(request, 'A tua conta foi atualizada!')
             return redirect('users:profile')
         else:
             messages.error(request,
-                'Problems updating your account, see errors below...')
+                'Problemas a atualizar a tua conta, vê os erros em baixo...')
     else:
         u_form = UserUpdateForm(instance=request.user)
     context = {
