@@ -34,8 +34,8 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser):
-    email = models.EmailField(max_length=255, unique=True)
-    username = models.CharField(max_length=30, unique=True)
+    email = models.EmailField(max_length=255, unique=True, verbose_name="E-mail")
+    username = models.CharField(max_length=30, unique=True, verbose_name="Nome de Utilizador")
     first_name = models.CharField(max_length=80, blank=True, null=True, verbose_name="Nome")
     last_name = models.CharField(max_length=80, blank=True, null=True, verbose_name="Apelido")
     loja = models.ForeignKey(Local, null=True, on_delete=models.SET_NULL)

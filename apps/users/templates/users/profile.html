@@ -7,18 +7,17 @@
             <div class="media-body">
                 <h2 class="account-heading">{{ user.first_name }} {{ user.last_name }}</h2>
                 <p class="text-secondary">{{ user.email }}</p>
-                <p class="text-secondary">{{ user.profile.full_name }}</p>
             </div>
         </div>
         <form method="POST" enctype="multipart/form-data">
             <!-- 'enctype' to suport images in the form -->
             {% csrf_token %}
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4" style="color: #e87e19;">Profile Info</legend>
+                <legend class="border-bottom mb-4" style="color: #e87e19;">Informação de Perfil</legend>
                 {{ u_form|crispy }}
             </fieldset>
             <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">Update</button>
+                <button class="btn btn-outline-info" type="submit">Atualizar</button>
             </div>
         </form>
     </div>

@@ -8,7 +8,7 @@ class UserRegisterForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ['email', 'username', 'first_name', 'last_name', 'bimby', 'aceito', 'role']
+        fields = ['email', 'username', 'first_name', 'last_name', 'bimby', 'loja', 'aceito', 'role']
         help_texts = {
             'password1': '',
             'password2': ''

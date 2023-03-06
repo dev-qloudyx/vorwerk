@@ -8,17 +8,18 @@
             <form method="POST">
                 {% csrf_token %}
                 <fieldset class="form-group">
-                    <legend class="border-bottom mb-4" style="color: #e87e19;"><i style="width: 30px" class="fa-solid fa-user-plus"></i> Register</legend>
+                    <legend class="border-bottom mb-4" style="color: #e87e19;"><i style="width: 30px" class="fa-solid fa-user-plus"></i>Registo</legend>
                     {{ form.email|as_crispy_field }}
                     {{ form.username|as_crispy_field }}
                     {{ form.first_name|as_crispy_field }}
                     {{ form.last_name|as_crispy_field }}
                     {{ form.bimby|as_crispy_field }}
+                    {{ form.loja|as_crispy_field }}
                     {{ form.aceito|as_crispy_field }}
                     {{ form.role.as_hidden }}
                 </fieldset>
                 <div class="form-group">
-                    <button class="btn btn-outline-info" type="submit">Register</button>
+                    <button class="btn btn-outline-info" type="submit">Registar</button>
                 </div>
             </form>
             <div class="pb-2">

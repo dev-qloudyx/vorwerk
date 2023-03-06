@@ -17,7 +17,7 @@
             {% if user.is_authenticated %}
                 <a class="mr-4 ml-auto d-lg-none" href="{% url 'users:profile' %}">
                     <img class="rounded-circle mr-2" style="width: 35px; height: 35px;"
-                            src="{{ user.profile.image.url }}">{{ user.username }}
+                            src="{% static 'images/smiley.png' %}">{{ user.username }}
                 </a>
             {% endif %}
             <button class="btn navbar-toggler mr-2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,7 +52,7 @@
 
             {% if user.is_authenticated %}
             <a class="d-none d-lg-inline-block mr-1 px-3 py-2 menu-user" href="{% url 'users:profile' %}">
-                <img class="rounded-circle mr-2" src="#">{{ user.username }}
+                <img class="rounded-circle mr-2" src="{% static 'images/smiley.png' %}">{{ user.username }}
             </a>
             <button onclick="logOut()" class="btn btn-md mr-2 d-none d-lg-inline-block" style="padding-left: 12px; padding-right: 12px;"><i class="fas fa-power-off"></i></button>
             {% endif %}
@@ -72,7 +72,7 @@
             </div>
         </div>
         <div class="d-none d-sm-none d-md-block w-100" style="text-align: center; position: relative; bottom: 0; text-align: center; font-size: 12px;">
-            <div class="row p-5 m-0" style="background-color: #d9d9d9;">
+            <div class="row p-4 m-0" style="background-color: #d9d9d9;">
                 <div class="col-4">
                     <span>
                         Termos e Condições
@@ -84,7 +84,6 @@
                     </span>
                 </div>
                 <div class="col-4">
-                    <h4 class="text-left">Redes Sociais</h4>
                     <div class="socialmedia d-flex justify-content-around">
                         <a href="https://www.facebook.com/BimbyPortugal?fref=ts" target="_blank"><i class="fab fa-facebook"></i></a>
                         <a href="https://www.instagram.com/bimbyportugal/" target="_blank"><i class="fab fa-instagram"></i></a>
