@@ -360,7 +360,7 @@ div.navbar-collapse {
 
 .nav-tabs {
   border-bottom: none;
-  margin-left: 10px;
+  /* margin-left: 10px; */
 }
 
 #despensa > div > div:nth-child(1) > div:hover {
@@ -368,12 +368,17 @@ div.navbar-collapse {
 }
 
 .heroimg {
+  border-top-right-radius: 18px;
+  border-top-left-radius: 18px;
+}
+
+.heroimgbox {
   border-radius: 18px;
   border: 1px solid #b1b2b3;
   transition: transform .5s,box-shadow .5s ease-in-out;
 }
 
-.heroimg > div > h4 {
+.heroimgbox > div > h4 {
   color: #e87e19;
 }
 

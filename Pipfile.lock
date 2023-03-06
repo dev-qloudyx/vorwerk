@@ -1,11 +1,11 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "80143b0a9e01f0a83a17114ebc95d7998c9cba3298bd2b5f2fd417184584e09d"
+            "sha256": "203806d9ffc2a611c3555f33ba56cd4b33435a23018560eb76af56c2fd76c9b5"
         },
         "pipfile-spec": 6,
         "requires": {
-            "python_version": "3.10"
+            "python_version": "3.9"
         },
         "sources": [
             {
@@ -124,6 +124,14 @@
                 "sha256:ff6f3db31555657f3163b15a6b7c6938d08df7adbfc9dd13d9d19edad678f1e8"
             ],
             "version": "==3.0.1"
+        },
+        "crispy-bootstrap4": {
+            "hashes": [
+                "sha256:5241ab1dc2188c95560aa786439bcbedec7416e6b0f5a52dded82380810367ec",
+                "sha256:f18386c4d96180c1bb1212487d6e8f5a3dd1a9bb58d3032183973d4d130b55f9"
+            ],
+            "index": "pypi",
+            "version": "==2022.1"
         },
         "django": {
             "hashes": [

@@ -29,77 +29,71 @@
 
     <div class="row">
         <div class="col-12 col-md-6 col-lg-3 d-flex align-items-stretch">
-            <div class="p-3 m-1 heroimg">
-                <div class="align-self-center">
-                    <h4 class="text-center">Apresentar a Mandolina</h4>
-                    <img src="{% static 'images/modulo-3.jpg' %}" alt="" width="100%">
-                    <div>
+            <div class="m-1 heroimgbox" style="display: grid; align-items: unset;">
+                
+                    
+                    <img src="{% static 'images/modulo-3.jpg' %}" alt="" width="100%" class="heroimg">
+                    <div class="p-3">
+                        <h4 class="text-center">Apresentar a Mandolina</h4>
                         Faça refeições impressionantes e surpreendentemente fáceis com a Mandolina. Fatie e rale ingredientes diferentes, de forma a dar sabor e textura a uma grande variedade de pratos.
                     </div>
-                </div>
+                
                 
             </div>
         </div>
         <div class="col-12 col-md-6 col-lg-3 d-flex align-items-stretch">
-            <div class="p-3 m-1 heroimg">
-                <div class="align-self-center">
-                    <h4 class="text-center">Conhecer a Bimby®</h4>
-                    <img src="{% static 'images/modulo-4.png' %}" alt="" width="100%">
-                    <div>
+            <div class="m-1 heroimgbox" style="display: grid; align-items: unset;">
+                
+                    
+                    <img src="{% static 'images/modulo-4.png' %}" alt="" width="100%" class="heroimg">
+                    <div class="p-3">
+                        <h4 class="text-center">Conhecer a Bimby®</h4>
                         Descubra a Bimby® TM6. É incrivelmente simples!
                     </div>
-                </div>
+                
                 
             </div>
         </div>
         <div class="col-12 col-md-6 col-lg-3 d-flex align-items-stretch">
-            <div class="p-3 m-1 heroimg">
-                <div class="align-self-center">
-                    <h4 class="text-center">Vender a retoma</h4>
-                    <img src="{% static 'images/modulo-5.png' %}" alt="" width="100%">
-                    <div>
+            <div class="m-1 heroimgbox" style="display: grid; align-items: unset;">
+                
+                    <img src="{% static 'images/modulo-5.png' %}" alt="" width="100%" class="heroimg">
+                    <div class="p-3">
+                        <h4 class="text-center">Vender a retoma</h4>
                         Se tem uma Bimby® TM21, TM31, TM5 ou qualquer outro robot de cozinha multifunções que cozinhe, vai adorar esta oportunidade.
                     </div>
-                </div>
+                
                 
             </div>
         </div>
         <div class="col-12 col-md-6 col-lg-3 d-flex align-items-stretch">
-            <div class="p-3 m-1 heroimg">
-                <div class="align-self-center">
+            <div class="m-1 heroimgbox" style="display: grid; align-items: unset;">
+                <img src="{% static 'images/modulo-6.png' %}" alt="" width="100%" class="heroimg">
+                <div class="p-3">
                     <h4 class="text-center">Descontos e promoções</h4>
-                    <img src="{% static 'images/modulo-6.png' %}" alt="" width="100%">
-                    <div>
                         É hora de poupar! Descontos até 60%.*
                     <br>* descontos apenas nas lojas físicas onde o evento se realiza durante o dia 11 de março
-                    </div>
                 </div>
-                
             </div>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-12" style="padding-left: 0px; padding-right: 0px; padding-top: 120px; padding-bottom: 90px;">
-            <div class="row">
-                <div class="col-4">
-                    <img src="{% static 'images/modulo-7.jpg' %}" alt="" width="100%">
-                </div>
-                <div class="col-8 align-self-center">
-                    <h3 class="text-center">
-                        Sugestões de receitas que farão a sua despensa mais rica e receitas para explorar o novo acessório Bimby® - Mandolina.
-                    </h3>
-                    <div class="my-2 text-center">
-                        <a class="btn btn-outline-info" href="{% url 'eventos:receitas' %}">Saber Mais</a>
-                    </div>
-                </div>
+    <div class="row" style="padding-left: 0px; padding-right: 0px; padding-top: 120px;">
+        <div class="col-4 px-0">
+            <img src="{% static 'images/modulo-7.jpg' %}" alt="" width="100%">
+        </div>
+        <div class="col-8 align-self-center">
+            <h3 class="text-center">
+                Sugestões de receitas que farão a sua despensa mais rica e receitas para explorar o novo acessório Bimby® - Mandolina.
+            </h3>
+            <div class="my-2 text-center">
+                <a class="btn btn-outline-info" href="{% url 'eventos:receitas' %}">Saber Mais</a>
             </div>
         </div>
-        <div class="col-12 mt-5" style="padding-left: 0px; padding-right: 0px;">
+        <div class="col-12 mt-5" style="padding-left: 0px; padding-right: 0px; padding-top: 90px;">
             <a href="{% url 'eventos:generate_bb_code' %}">
                 <img src="{% static 'images/modulo-8.png' %}" alt="" width="100%">
             </a>
-            
         </div>
     </div>
 </div>
