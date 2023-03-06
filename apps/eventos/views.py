@@ -94,7 +94,7 @@ def promos(request):
     return render(request, 'eventos/promos.html',
                     context={'title':'Promoções'})
 
-@login_required
+# @login_required
 def generate_bbcode(request):
     if request.method == 'POST':
         form = GenerateBBCodeForm(request.POST)

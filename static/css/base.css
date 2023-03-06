@@ -382,9 +382,9 @@ div.navbar-collapse {
   color: #e87e19;
 }
 
-
 .card-body {
   min-height: 100px;
+  max-height: 100px;
 }
 
 /* ---------------------------------------------------
