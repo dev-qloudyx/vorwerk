@@ -411,6 +411,12 @@ div.navbar-collapse {
   /* margin-left: 220px;  */
 }
 
+#aretodos {
+  background-color: white; 
+  margin-top: -50px; 
+  text-align: center;
+}
+
 /* ---------------------------------------------------
   MEDIAQUERIES
 ----------------------------------------------------- */
