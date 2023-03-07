@@ -95,7 +95,28 @@ def promos(request):
     return render(request, 'eventos/promos.html',
                     context={'title':'Promoções'})
 
-# @login_required
+class BBCodeViewSet(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticated]  # Set permission for this viewset to require authentication (Is set to Basic Auth)
+    serializer_class = MessageSerializer  # Set the serializer class for the Message model
+    parser_classes = [JSONParser, FormParser, MultiPartParser]
+
+    def create(self, request, *args, **kwargs):
+        data_dict = dict(request.data)  # Convert the QueryDict object to a dictionary
+        for key in data_dict:
+            data_dict[key] = str(data_dict[key][0])  # Convert all values to strings
+        serializer = self.get_serializer(data=data_dict)  # Get the serializer for the incoming request data
+        check_serializer = serializer.is_valid(raise_exception=False)  # Validate the incoming data
+        for i in [element for element in data_dict]:
+                kwargs[i] = data_dict[i]
+        if not check_serializer:  # If validation fails, return a 400 response
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            serializer.save()
+            #CodeGeneration.send_message(request,data_dict,**kwargs)
+            task = send_message.delay(**kwargs)
+            return HttpResponse(b'OK', content_type='text/plain', status=status.HTTP_200_OK)
+
+@login_required
 def generate_bbcode(request):
         check_bb = BBCode.objects.filter(user=request.user)
         sms_number = 4242
