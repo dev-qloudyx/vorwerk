@@ -30,6 +30,22 @@
 <script src="{% static 'kendo/js/messages/kendo.messages.pt-PT.min.js' %}"></script>
 <script src="{% static 'kendo/js/messages/custom_messages.js' %}"></script>
 
+<style>
+    @font-face {
+        font-family: Merriweather;
+        src: url("{% static 'fonts/Merriweather-Regular.ttf' %}");
+    }
+
+    @font-face {
+        font-family: Source-Regular;
+        src: url("{% static 'fonts/SourceSansPro-Regular.ttf' %}");
+    }
+
+    @font-face {
+        font-family: Source-Bold;
+        src: url("{% static 'fonts/SourceSansPro-Bold.ttf' %}");
+    }
+</style>
 
 {% if title %}
     <title>Vorwerk - {{ title }}</title>
