@@ -84,7 +84,7 @@ def evento(request):
 
 def home(request):
     return render(request, 'eventos/home.html',
-                    context={'title':'Home'})
+                    context={'title':'Dia Aberto Bimby®'})
 
 def receitas(request):
     return render(request, 'eventos/receitas.html',

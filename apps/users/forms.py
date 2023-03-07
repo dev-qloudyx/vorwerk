@@ -1,10 +1,13 @@
 from django import forms
 from .models import User, Profile
+from django.utils.safestring import mark_safe
 from django.contrib.auth.forms import UserCreationForm
 
 
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
+    aceito = forms.BooleanField(widget=forms.CheckboxInput(),
+                           label=mark_safe('Aceito a <a class="x" href="#">Política de Privacidade</a>'))
 
     class Meta:
         model = User
