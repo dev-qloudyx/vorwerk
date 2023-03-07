@@ -14,6 +14,10 @@ h1, h2, h4, h5, h6 {
   color: #444444;
 }
 
+h1, h2, h3, h4 {
+  font-family: 'Merriweather';
+}
+
 ul {
   margin: 0;
 }
@@ -92,7 +96,7 @@ th{
 }
 
 .btn {
-  /* font-family: 'SourceSansPro-Regular'; */
+  font-family: 'Source-Bold';
   color:#046d84;
   border-color: #046d84;
   background-color: white;
@@ -145,12 +149,12 @@ th{
 
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Source-Regular';
   background: #fafafa;
 }
 
 p {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Source-Regular';
   font-size: 0.9em;
   font-weight: 300;
   line-height: 1.3em;
@@ -348,6 +352,7 @@ a.article:hover {
 }
 
 li.menu-item {
+  font-family: 'Source-Bold';
   color: white;
   background-color: #046d84;
   border-radius: 8px;
@@ -391,7 +396,17 @@ div.navbar-collapse {
 .heroimgbox {
   border-radius: 18px;
   border: 1px solid #b1b2b3;
-  transition: transform .5s,box-shadow .5s ease-in-out;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  /* transition: transform .5s,box-shadow .5s ease-in-out; */
+}
+
+.heroimgbox-login {
+  border-radius: 18px;
+  border: 1px solid #b1b2b3;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  background-color: white;
+  border-top-right-radius: 0;
+  /* transition: transform .5s,box-shadow .5s ease-in-out; */
 }
 
 .heroimgbox > div > h4 {
@@ -399,8 +414,8 @@ div.navbar-collapse {
 }
 
 .card-body {
-  min-height: 100px;
-  max-height: 100px;
+  min-height: 80px;
+  max-height: 80px;
 }
 
 /* ---------------------------------------------------
@@ -455,11 +470,11 @@ div.navbar-collapse {
 
 @media (max-width: 767px) {
   #content {
-    padding-bottom: 194px;
+    padding-bottom: 217px;
   }
 
   .footer {
-    height: 194px;
+    height: 217px;
   }
 
   #sidebar {
@@ -673,6 +688,7 @@ table.table thead th.desc.orderable::after {
 }
 
 .nav-tabs .nav-link {
+  font-family: 'Source-Bold';
   color: #056464;
   margin-bottom: -1px;
   border: 1px solid transparent;
