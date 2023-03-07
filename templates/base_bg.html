@@ -26,8 +26,8 @@
             <a class="navbar-brand ml-2 mr-4" href="{% url 'eventos:home' %}"><img src="{% static 'images/bimby-logo.png' %}" alt="" style="width: 65%"></a>
             {% if user.is_authenticated %}
                 <a class="mr-4 ml-auto d-lg-none" href="{% url 'users:profile' %}">
-                    <img class="rounded-circle mr-2" style="width: 35px; height: 35px;"
-                            src="{% static 'images/smiley.png' %}">{{ user.username }}
+                    <img class="rounded-circle mr-2 p-1" style="width: 35px; height: 35px;"
+                            src="{% static 'images/icon-user.png' %}">{{ user.username }}
                 </a>
             {% endif %}
             <button class="btn navbar-toggler mr-2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,7 +62,7 @@
 
             {% if user.is_authenticated %}
             <a class="d-none d-lg-inline-block mr-1 px-3 py-2 menu-user" href="{% url 'users:profile' %}">
-                <img class="rounded-circle mr-2" src="{% static 'images/smiley.png' %}">{{ user.username }}
+                <img class="rounded-circle mr-2 p-1" src="{% static 'images/icon-user.png' %}">{{ user.username }}
             </a>
             <button onclick="logOut()" class="btn btn-md mr-2 d-none d-lg-inline-block" style="padding-left: 12px; padding-right: 12px;"><i class="fas fa-power-off"></i></button>
             {% endif %}
