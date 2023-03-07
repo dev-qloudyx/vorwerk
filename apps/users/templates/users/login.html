@@ -8,11 +8,11 @@
             <form method="POST">
                 {% csrf_token %}
                 <fieldset class="form-group">
-                    <legend class="border-bottom mb-4" style="color: #e87e19;">Login</legend>
+                    <legend class="border-bottom mb-4" style="color: #e87e19;">Iniciar Sessão</legend>
                     {{ form|crispy }}
                 </fieldset>
                 <div class="form-group">
-                    <button class="btn btn-outline-info" type="submit">Login</button>
+                    <button class="btn btn-outline-info" type="submit">Iniciar Sessão</button>
                 </div>
             </form>
             <div class="pb-2">
@@ -22,7 +22,7 @@
             </div>
             <div class="border-top pt-3">
                 <small class="text-muted">
-                    Esqueceu a palavra-passe? <a href="{% url 'users:password_reset' %}">Recupere aqui</a>
+                    Esqueceu-se da sua palavra-passe? <a href="{% url 'users:password_reset' %}">Recupere aqui</a>
                 </small>
             </div>
         </div>
