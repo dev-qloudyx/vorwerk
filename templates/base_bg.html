@@ -7,9 +7,16 @@
     {% include '_head.html' %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
     <link rel="icon" href="{% static 'images/bimby-logo.png' %}" type="image/png" sizes="16x16">
-    <!-- <link rel="stylesheet" type="text/css" href="{% static 'fonts/Merriweather-Regular.ttf' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'fonts/SourceSansPro-Bold.ttf' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'fonts/SourceSansPro-Regular.ttf' %}"> -->
+   
+    {% if not user.is_authenticated %}
+    <style>
+        @media (max-width: 991px) {
+            #navbarSupportedContent {
+                margin-top: 16.125em;
+            }
+        }
+    </style>
+    {% endif %}
 </head>
 
 <body>

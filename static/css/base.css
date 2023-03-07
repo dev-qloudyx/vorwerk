@@ -433,7 +433,7 @@ div.navbar-collapse {
 
 #aretodos {
   background-color: white; 
-  margin-top: -50px; 
+  margin-top: -60px; 
   text-align: center;
 }
 
@@ -465,6 +465,9 @@ div.navbar-collapse {
   #content {
     position: relative;
   }
+  #aretodos {
+    margin-top: -40px; 
+  }
 
 }
 
@@ -475,6 +478,10 @@ div.navbar-collapse {
 
   .footer {
     height: 217px;
+  }
+
+  #aretodos {
+    margin-top: -25px; 
   }
 
   #sidebar {

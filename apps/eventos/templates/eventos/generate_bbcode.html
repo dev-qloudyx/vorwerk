@@ -1,36 +1,42 @@
-{% extends 'base.html' %}
+{% extends 'base_bg.html' %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 
-{% if not user.is_authenticated %}
-
-  <div class="row">
-    <div class="col-md-4 offset-md-4">
-      <div class="heroimg p-4 mt-4">
-        <h5 class="text-center">Ainda não se registou?</h5>
-        <div class="text-center mb-3">
-          <a class="btn" href="{% url 'users:register' %}">Registar</a>
+  {% if not user.is_authenticated %}
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="heroimgbox-login p-5 mt-5">
+          <h5 class="text-center">Ainda não se registou?</h5>
+          <div class="text-center mb-4">
+            <a class="btn" href="{% url 'users:register' %}">Registar</a>
+          </div>
+          <h5 class="text-center">Já está registado?</h5>
+          <div class="text-center">
+            <a class="btn" href="{% url 'users:login' %}">Login</a> <br>
+          </div>
         </div>
-        <h5 class="text-center">Já está registado?</h5>
-        <div class="text-center">
-          <a class="btn" href="{% url 'users:login' %}">Login</a> <br>
+      </div>
+    </div>
+  {% else %}
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="heroimgbox-login p-5 mt-5">
+        <legend class="border-bottom mb-4" style="color: #e87e19;">Insira o código que lhe foi dado na Loja</legend>
+        <div class="mb-3">
+          <form method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button class="btn mt-3" type="submit">GERAR</button>
+          </form>
+          {% if result %}
+            <p>{{ result }}</p>
+          {% endif %}
+      
         </div>
       </div>
     </div>
   </div>
-
-{% else %}
-
-  <h1>GERAR BBCode</h1>
-    <form method="post">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <button type="submit">GERAR</button>
-    </form>
-  {% if result %}
-    <p>{{ result }}</p>
   {% endif %}
-
-{% endif %}
 
 {% endblock %}
