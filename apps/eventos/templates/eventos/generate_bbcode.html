@@ -1,5 +1,6 @@
 {% extends 'base_bg.html' %}
 {% load crispy_forms_tags %}
+{% load static %}
 
 {% block content %}
 
@@ -22,6 +23,7 @@
   <div class="row">
     <div class="col-md-8 offset-md-2">
       <div class="heroimgbox-login p-5 mt-5">
+        {% if not reward and not bb_code %}
         <legend class="border-bottom mb-4" style="color: #e87e19;">Insira o código que lhe foi dado na Loja</legend>
         <div class="mb-3">
           <form method="post">
@@ -29,14 +31,18 @@
             {{ form|crispy }}
             <button class="btn mt-3" type="submit">GERAR</button>
           </form>
-          {% if result %}
-            <p>{{ result }}</p>
-          {% endif %}
-      
+        {% endif %}
+        {% if result %}
+          <p>{{ result }}</p>
+          {% for i, image_filename in REWARD_IMAGES %}
+              {% if reward_type == i %}
+              <img src="{% static 'images/'|add:image_filename %}" alt="{{ reward }}">
+              {% endif %}
+          {% endfor %}
+        {% endif %}
         </div>
       </div>
     </div>
   </div>
   {% endif %}
-
 {% endblock %}

@@ -9,8 +9,9 @@ from django.shortcuts import render
 from django.views.generic import CreateView
 
 from apps.eventos.code_gen import CodeGeneration
+from apps.eventos.tasks import send_message
 from main import settings
-from .models import BBCode, Inscricao, Evento, Message, StoreCode
+from .models import BBCode, Inscricao, Evento, Message, Reward, StoreCode
 from .forms import GenerateBBCodeForm, InscricaoForm, SelectCodesForm, StoreCodesForm
 from django.urls import reverse_lazy, reverse
 
@@ -96,21 +97,86 @@ def promos(request):
 
 # @login_required
 def generate_bbcode(request):
-    if request.method == 'POST':
-        form = GenerateBBCodeForm(request.POST)
-        if form.is_valid():
-            code = form.cleaned_data['code']
-            result = CodeGeneration.generate_bb_code(request, code)
+        check_bb = BBCode.objects.filter(user=request.user)
+        sms_number = 4242
+        REWARD_IMAGES = (
+            ('Reward 1', 'reward_image_1.jpg'),
+            ('Reward 2', 'reward_image_2.jpg'),
+            ('Reward 3', 'reward_image_3.jpg'),
+            ('Reward 4', 'reward_image_4.jpg'),
+            ('Reward 5', 'reward_image_5.jpg'),
+        )
+
+        if check_bb.exists() and Reward.objects.filter(bbcode=check_bb[0]).exists():
+            reward_type = Reward.objects.get(bbcode=check_bb[0]).reward_type
             context = {
-                'result': result,
+                'result': f'A sua recompensa',
+                'reward_type': reward_type,
+                'reward': True,
+                'REWARD_IMAGES':REWARD_IMAGES,
             }
             return render(request, 'eventos/generate_bbcode.html', context)
+        elif check_bb.exists():
+            context = {
+                'result': f'Envie um sms para o {sms_number} com o código {check_bb[0].code}',
+                'bb_code': True,
+            }
+            return render(request, 'eventos/generate_bbcode.html', context)
+        else:
+            form = GenerateBBCodeForm(request.POST)
+            if form.is_valid():
+                code = form.cleaned_data['code']
+                if check_bb.exists():
+                    context = {
+                        'result': f'Somente um BBCode por cliente... {check_bb[0].code}',
+                    }
+                    return render(request, 'eventos/generate_bbcode.html', context)
+                else:
+                    result = CodeGeneration.generate_bb_code(request, code)
+                    context = {
+                        'result': f'Envie um sms para o {sms_number} com o código {result}',
+                        'bb_code': True
+                    }
+                    return render(request, 'eventos/generate_bbcode.html', context)
+            else:
+                form = GenerateBBCodeForm()
+            context = {
+                'form': form,
+            }
+            return render(request, 'eventos/generate_bbcode.html', context)
+
+@login_required
+@role_required(ADMIN)
+def import_store_codes(request):
+    from openpyxl import load_workbook
+    
+    if request.method == 'POST':
+        form = StoreCodesForm(request.POST, request.FILES)
+        if form.is_valid():
+            event = form.cleaned_data['event']
+            excel_file = request.FILES['excel_file']
+
+            # Load the Excel file and get the first sheet
+            workbook = load_workbook(excel_file)
+            sheet = workbook.active
+
+            # Read the codes from the sheet
+            codes = [str(cell.value).strip() for cell in sheet['A'] if cell.value and len(str(cell.value).strip()) <= 8]
+
+
+            # Create StoreCode objects for the codes
+            for code in codes:
+                StoreCode.objects.create(code=code, event=event)
+
+            # Redirect to the success page
+            num_codes = StoreCode.objects.filter(event=event).count()
+            return render(request, 'eventos/import_store_codes.html', {'num_codes': num_codes, 'form': form})
     else:
-        form = GenerateBBCodeForm()
-    context = {
-        'form': form,
-    }
-    return render(request, 'eventos/generate_bbcode.html', context)
+        form = StoreCodesForm()
+    return render(request, 'eventos/import_store_codes.html', {'form': form})
+ 
+
+### NOT USED ###
 
 @login_required
 @role_required(ADMIN)
@@ -144,6 +210,8 @@ def select_storecodes(request):
         form = SelectCodesForm()
     return render(request, 'eventos/select_codes.html', {'form': form})
 
+@login_required
+@role_required(ADMIN)
 def download_codes(request, selected_codes):
     # Generate a unique filename based on the current timestamp
     characters = string.digits + string.ascii_uppercase
@@ -163,60 +231,3 @@ def download_codes(request, selected_codes):
     # Get the URL of the file in the media directory
     file_url = default_storage.url(filename)
     return file_url
-
-
-def import_store_codes(request):
-    from openpyxl import load_workbook
-    
-    if request.method == 'POST':
-        form = StoreCodesForm(request.POST, request.FILES)
-        if form.is_valid():
-            event = form.cleaned_data['event']
-            excel_file = request.FILES['excel_file']
-
-            # Load the Excel file and get the first sheet
-            workbook = load_workbook(excel_file)
-            sheet = workbook.active
-
-            # Read the codes from the sheet
-            codes = [str(cell.value).strip() for cell in sheet['A'] if cell.value and len(str(cell.value).strip()) <= 8]
-
-
-            # Create StoreCode objects for the codes
-            for code in codes:
-                StoreCode.objects.create(code=code, event=event)
-
-            # Redirect to the success page
-            num_codes = StoreCode.objects.filter(event=event).count()
-            return render(request, 'eventos/import_store_codes.html', {'num_codes': num_codes, 'form': form})
-    else:
-        form = StoreCodesForm()
-    return render(request, 'eventos/import_store_codes.html', {'form': form})
- 
-
-
-class BBCodeViewSet(viewsets.ModelViewSet):
-    permission_classes = [IsAuthenticated]  # Set permission for this viewset to require authentication (Is set to Basic Auth)
-    serializer_class = MessageSerializer  # Set the serializer class for the Message model
-    parser_classes = [JSONParser, FormParser, MultiPartParser]
-
-    def create(self, request, *args, **kwargs):
-        print(request.data)
-        data_dict = dict(request.data)  # Convert the QueryDict object to a dictionary
-        for key in data_dict:
-            data_dict[key] = str(data_dict[key][0])  # Convert all values to strings
-        print(data_dict)
-        serializer = self.get_serializer(data=data_dict)  # Get the serializer for the incoming request data
-        check_serializer = serializer.is_valid(raise_exception=False)  # Validate the incoming data
-
-        if not check_serializer:  # If validation fails, return a 400 response
-            print(serializer.errors)
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-        else:
-            serializer.save()
-            CodeGeneration.send_message(request,data_dict,**kwargs)
-            #task = CodeGeneration.send_message(request,**kwargs)
-            return HttpResponse(b'OK', content_type='text/plain', status=status.HTTP_200_OK)
-
-
-

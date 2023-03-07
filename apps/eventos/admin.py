@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Evento, DetalhesEvento, SubEvento, Inscricao, StoreCode, BBCode, Message
+from .models import Evento, DetalhesEvento, SubEvento, Inscricao, StoreCode, BBCode, Message, Reward
 
 admin.site.register(Evento)
 admin.site.register(DetalhesEvento)
@@ -15,5 +15,6 @@ class BBCodeAdmin(admin.ModelAdmin):
     list_filter = ('store_code',)
 
 admin.site.register(BBCode, BBCodeAdmin)
+admin.site.register(Reward)
 admin.site.register(Message)
 

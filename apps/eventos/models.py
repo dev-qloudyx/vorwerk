@@ -55,6 +55,23 @@ class BBCode(models.Model):
     def __str__(self):
         return f'{self.code} - {self.store_code}'
 
+class Reward(models.Model):
+    REWARD_CHOICES = (
+        ('Reward 1', 1),
+        ('Reward 2', 2),
+        ('Reward 3', 3),
+        ('Reward 4', 4),
+        ('Reward 5', 5),
+    )
+
+    bbcode = models.OneToOneField(BBCode, on_delete=models.CASCADE, related_name='reward')
+    reward_type = models.CharField(max_length=20, choices=REWARD_CHOICES)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+        
+    def __str__(self):
+        return f'{self.reward_type} - {self.bbcode}'
+
+
 class Message(models.Model):
     MsgId = models.CharField(max_length=255)
     From = models.CharField(max_length=255)

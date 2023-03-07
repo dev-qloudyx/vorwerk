@@ -12,8 +12,9 @@ djangorestframework = "*"
 requests = "*"
 gunicorn = "*"
 openpyxl = "*"
-
 crispy-bootstrap4 = "*"
+celery = "*"
+django_celery_results = "*"
 
 [dev-packages]
 
