@@ -58,9 +58,8 @@
             {% endif %}
         </nav>
 
-
         <!-- Page Content  -->
-        <div id="content">
+        <div id="content" style="padding-bottom: 178px;">
             <div>
                 {% for message in messages %}
                 <div class="text-center mt-4 alert alert-{{ message.tags }}">
@@ -70,21 +69,25 @@
                 {% endfor %}
                 {% block content %}{% endblock %}
             </div>
-        </div>
-        <div class="d-none d-sm-none d-md-block w-100" style="text-align: center; position: relative; bottom: 0; text-align: center; font-size: 12px;">
+        </div> 
+        
+        <!-- Footer -->
+        <div class="d-none d-sm-none d-md-block w-100 footer" style="font-size: 12px;">
             <div class="row p-4 m-0" style="background-color: #d9d9d9;">
                 <div class="col-4">
-                    <span>
-                        Termos e Condições
-                    </span>
+                    <h5>
+                        <a href="#" target="_blank">Termos e Condições</a> <br>
+                        <a href="#" target="_blank">Regulamento</a> <br>
+                        <a href="https://www.vorwerk.com/pt/pt/c/home/geral/politica-de-privacidade" target="_blank">Politica de privacidade</a> <br>
+                    </h5>
                 </div>
                 <div class="col-4">
                     <span>
-                        Politica de privacidade
+                        
                     </span>
                 </div>
                 <div class="col-4">
-                    <div class="socialmedia d-flex justify-content-around">
+                    <div class="socialmedia d-flex justify-content-between">
                         <a href="https://www.facebook.com/BimbyPortugal?fref=ts" target="_blank"><i class="fab fa-facebook"></i></a>
                         <a href="https://www.instagram.com/bimbyportugal/" target="_blank"><i class="fab fa-instagram"></i></a>
                         <a href="https://www.youtube.com/channel/UCCsNIGpKCR5XfNoYbiZi30g" target="_blank"><i class="fab fa-youtube"></i></a>
@@ -93,7 +96,7 @@
                 </div>
             </div>
             <div class="row p-1 m-0" style="background-color: rgb(162, 161, 161);">
-                <div class="col mx-auto">
+                <div class="col mx-auto text-center">
                     <a href="https://qloudyx.pt" target="_blank"> &#169; {% now "Y" %}, eXcellerated by qloudyx.</a>
                 </div>
             </div>
