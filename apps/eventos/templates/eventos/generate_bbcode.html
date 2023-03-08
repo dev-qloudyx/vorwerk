@@ -33,10 +33,11 @@
           </form>
         {% endif %}
         {% if result %}
-          <p>{{ result }}</p>
           {% for i, image_filename in REWARD_IMAGES %}
               {% if reward_type == i %}
               <img src="{% static 'images/'|add:image_filename %}" alt="{{ reward }}">
+              <p>Parabéns! Pode fazer o levantamento do seu prémio a partir de dia 21 de março de 2023 na Loja onde participou no evento e no passatempo.*</p>
+              <p>*Se está a participar na Loja de Coimbra, Loja de Aveiro ou Vorwerk Studios de Mirandela, Portimão ou Viana do Castelo, entraremos em contacto consigo via email para comunicar onde será feito o levantamento do seu prémio.</p>
               {% endif %}
           {% endfor %}
         {% endif %}

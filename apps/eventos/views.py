@@ -12,7 +12,7 @@ from apps.eventos.code_gen import CodeGeneration
 from apps.eventos.tasks import send_message
 from main import settings
 from .models import BBCode, Inscricao, Evento, Message, Reward, StoreCode
-from .forms import GenerateBBCodeForm, InscricaoForm, SelectCodesForm, StoreCodesForm
+from .forms import GenerateBBCodeForm, InscricaoForm, RewardsForm, SelectCodesForm, StoreCodesForm
 from django.urls import reverse_lazy, reverse
 
 from rest_framework import viewsets
@@ -121,20 +121,21 @@ def generate_bbcode(request):
         check_bb = BBCode.objects.filter(user=request.user)
         sms_number = 4242
         REWARD_IMAGES = (
-            ('Reward 1', 'reward_image_1.jpg'),
-            ('Reward 2', 'reward_image_2.jpg'),
-            ('Reward 3', 'reward_image_3.jpg'),
-            ('Reward 4', 'reward_image_4.jpg'),
-            ('Reward 5', 'reward_image_5.jpg'),
+            ('Livro Italia', 'reward_image_1.jpg'),
+            ('Livro India', 'reward_image_2.jpg'),
+            ('Livro A Cozinhar se Conta uma Historia', 'reward_image_3.jpg'),
+            ('Livro ao Sol e ao Por do Sol', 'reward_image_4.jpg'),
+            ('Livro Chocolate', 'reward_image_5.jpg'),
+            ('Livro Receitas Bimby S e XL', 'reward_image_6.jpg'),
         )
 
         if check_bb.exists() and Reward.objects.filter(bbcode=check_bb[0]).exists():
-            reward_type = Reward.objects.get(bbcode=check_bb[0]).reward_type
+            reward = Reward.objects.get(bbcode=check_bb[0]).reward
             context = {
                 'result': f'A sua recompensa',
-                'reward_type': reward_type,
+                'reward_type': reward,
                 'reward': True,
-                'REWARD_IMAGES':REWARD_IMAGES,
+                'REWARD_IMAGES': REWARD_IMAGES
             }
             return render(request, 'eventos/generate_bbcode.html', context)
         elif check_bb.exists():
@@ -196,6 +197,35 @@ def import_store_codes(request):
         form = StoreCodesForm()
     return render(request, 'eventos/import_store_codes.html', {'form': form})
  
+@login_required
+@role_required(ADMIN)
+def import_rewards(request):
+    from openpyxl import load_workbook
+    
+    if request.method == 'POST':
+        form = RewardsForm(request.POST, request.FILES)
+        if form.is_valid():
+            event = form.cleaned_data['event']
+            excel_file = request.FILES['excel_file']
+
+            # Load the Excel file and get the first sheet
+            workbook = load_workbook(excel_file)
+            sheet = workbook.active
+
+            # Read the codes from the sheet
+            rewards = [str(cell.value).strip() for cell in sheet['A'] if cell.value]
+
+            # Create StoreCode objects for the codes
+            for reward in rewards:
+                Reward.objects.create(reward=reward, event=event)
+
+            # Redirect to the success page
+            num_codes = Reward.objects.all().count()
+            return render(request, 'eventos/import_rewards.html', {'num_codes': num_codes, 'form': form})
+    else:
+        form = StoreCodesForm()
+    return render(request, 'eventos/import_rewards.html', {'form': form})
+
 
 ### NOT USED ###
 

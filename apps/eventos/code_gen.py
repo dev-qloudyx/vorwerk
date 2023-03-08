@@ -102,33 +102,28 @@ class CodeGeneration:
         try:
             bb_code = BBCode.objects.get(code=kwargs['Msg'])
             if bb_code.valid:
-                # Assign reward based on the count of existing BBCode objects
-                # Need to adjust the last_reward.reward_type
-                last_reward = Reward.objects.last()
-                if last_reward:
-                    last_reward_type = last_reward.reward_type
-                    reward_num = (int(last_reward_type[-1]) % 5) + 1
-                else:
-                    reward_num = 1
+               
+                next_reward = Reward.objects.filter(is_redeemed=False).order_by('id').first()
 
-                reward_type, _ = Reward.REWARD_CHOICES[reward_num - 1]
-
-                reward = Reward.objects.create(bbcode=bb_code, reward_type=reward_type, user=bb_code.user)
-                reward.save()
+                if next_reward:
+                    next_reward.is_redeemed = True
+                    next_reward.bbcode = bb_code
+                    next_reward.user=bb_code.user
+                    next_reward.save()
 
                 # BBCode object with the given code exists and is valid
-                link = 'https://diaabertobimby.bimby.pt/'
+                link = 'https://diaabertobimby.bimby.pt/passatempo/'
                 payload['messageText'] = f"O seu código foi confirmado com sucesso. Aceda à app em {link} para ver o seu prémio"
             else:
                 # BBCode object with the given code exists but is invalid
-                payload['messageText'] = "Obrigado, mas todos os prémios já foram retirados..."
+                payload['messageText'] = "Infelizmente todos os prémios já foram atribuídos. Obrigada."
             #response = requests.post('https://apitest.usendit.pt/v2/remoteusendit.asmx', data=payload, headers=headers)
             response = requests.post('https://api.usendit.pt/v2/remoteusendit.asmx/SendMessage', data=payload, headers=headers)
 
             # If a BBCode object with the given code exists, return a 200 response with "OK" result
         except BBCode.DoesNotExist:
             # BBCode object with the given code doesn't exist
-            payload['messageText'] = f"Infelizmente o seu código {kwargs['Msg']} não está correto."
+            payload['messageText'] = f"O código que enviou não está correto. Tente novamente."
             #response = requests.post('https://apitest.usendit.pt/v2/remoteusendit.asmx', data=payload, headers=headers)
             response = requests.post('https://api.usendit.pt/v2/remoteusendit.asmx/SendMessage', data=payload, headers=headers)
         

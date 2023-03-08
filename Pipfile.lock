@@ -1,11 +1,15 @@
 {
     "_meta": {
         "hash": {
+<<<<<<< HEAD
             "sha256": "8af06e552bb61e8a280ee503ad85f9fd6a18424609c6e727b62d1495df91a2fc"
+=======
+            "sha256": "a65071df340925d5943ec498d970e45418dca8adc6d327cc869402a29bef5672"
+>>>>>>> 9ccbadc (add new reward logic, migrations, template changes)
         },
         "pipfile-spec": 6,
         "requires": {
-            "python_version": "3.9"
+            "python_version": "3.10"
         },
         "sources": [
             {

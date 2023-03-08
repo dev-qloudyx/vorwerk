@@ -27,3 +27,8 @@ class StoreCodesForm(forms.Form):
     #num_codes = forms.IntegerField(min_value=1, max_value=100000)
     event = forms.ModelChoiceField(queryset=Evento.objects.all())
     excel_file = forms.FileField()
+
+class RewardsForm(forms.Form):
+    #num_codes = forms.IntegerField(min_value=1, max_value=100000)
+    event = forms.ModelChoiceField(queryset=Evento.objects.all())
+    excel_file = forms.FileField()
