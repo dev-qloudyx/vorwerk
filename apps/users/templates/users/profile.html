@@ -4,7 +4,7 @@
 {% block content%}
 <div class="row">
     <div class="col-12 col-lg-8 offset-lg-2">
-        <div class="heroimgbox-login p-4 mt-5">
+        <div class="heroimgbox-login p-4 my-5">
             <div class="media">
                 <div class="media-body">
                     <h2 class="account-heading">{{ user.first_name }} {{ user.last_name }}</h2>
@@ -16,7 +16,38 @@
                 {% csrf_token %}
                 <fieldset class="form-group">
                     <legend class="border-bottom mb-4" style="color: #e87e19;">Informação de Perfil</legend>
-                    {{ u_form|crispy }}
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-12 col-md-6">
+                                        {{ u_form.email|as_crispy_field }}
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        {{ u_form.username|as_crispy_field }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-md-6">
+                                        {{ u_form.first_name|as_crispy_field }}
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        {{ u_form.last_name|as_crispy_field }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-md-6 order-1">
+                                        {{ u_form.bimby|as_crispy_field }}
+                                    </div>
+                                    <div class="col-12 col-md-6 order-2 mt-md-4">
+                                        {{ u_form.aceito|as_crispy_field }}
+                                        {{ u_form.role.as_hidden }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    
+                                </div>
+                            </div>
+                        </div>
                 </fieldset>
                 <div class="form-group">
                     <button class="btn btn-outline-info" type="submit">Atualizar</button>
