@@ -113,7 +113,7 @@ class CodeGeneration:
 
                 # BBCode object with the given code exists and is valid
                 link = 'https://diaabertobimby.bimby.pt/passatempo/'
-                payload['messageText'] = f"O seu código foi confirmado com sucesso. Aceda à app em {link} para ver o seu prémio"
+                payload['messageText'] = f"O seu código foi confirmado com sucesso. Aceda à app em {link} para ver o seu prémio."
             else:
                 # BBCode object with the given code exists but is invalid
                 payload['messageText'] = "Infelizmente todos os prémios já foram atribuídos. Obrigada."
