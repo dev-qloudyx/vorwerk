@@ -17,7 +17,7 @@ class InscricaoForm(forms.ModelForm):
         self.initial['user'] = user
 
 class GenerateBBCodeForm(forms.Form):
-    code = forms.CharField(max_length=10)
+    code = forms.CharField(label='', max_length=10)
 
 class SelectCodesForm(forms.Form):
     num_codes = forms.IntegerField(min_value=1, max_value=10000)
