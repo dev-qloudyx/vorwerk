@@ -121,10 +121,10 @@ def generate_bbcode(request):
         check_bb = BBCode.objects.filter(user=request.user)
         sms_number = 4242
         REWARD_IMAGES = (
-            ('Livro Italia', 'reward_image_1.jpg'),
-            ('Livro India', 'reward_image_2.jpg'),
-            ('Livro A Cozinhar se Conta uma Historia', 'reward_image_3.jpg'),
-            ('Livro ao Sol e ao Por do Sol', 'reward_image_4.jpg'),
+            ('Livro Itália', 'reward_image_1.jpg'),
+            ('Livro Índia', 'reward_image_2.jpg'),
+            ('Livro A Cozinhar se Conta uma História', 'reward_image_3.jpg'),
+            ('Livro ao Sol e ao Pôr do Sol', 'reward_image_4.jpg'),
             ('Livro Chocolate', 'reward_image_5.jpg'),
             ('Livro Receitas Bimby S e XL', 'reward_image_6.jpg'),
         )
