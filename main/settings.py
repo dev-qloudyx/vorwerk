@@ -223,6 +223,7 @@ REST_FRAMEWORK = {
     )
 }
 
+<<<<<<< HEAD
 CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL')
 CELERY_TIMEZONE = "Europe/Lisbon"
 CELERY_RESULT_BACKEND = 'django-db'
@@ -230,3 +231,6 @@ CELERY_CACHE_BACKEND = 'django-cache'
 CELERY_RESULT_EXTENDED = True
 
 # CSRF_TRUSTED_ORIGINS = [os.getenv('CSRF_TRUSTED_ORIGINS'),'https://*.127.0.0.1'] #Django 4 up!
+=======
+CSRF_TRUSTED_ORIGINS = [os.getenv('CSRF_TRUSTED_ORIGINS'),'https://*.127.0.0.1'] #Django 4 up!
+>>>>>>> 7b773e0 (Updates for deployment)
