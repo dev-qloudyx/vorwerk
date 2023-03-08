@@ -55,7 +55,7 @@ class CodeGeneration:
                 return bb_code.code
         else:
             # If the provided code doesn't exist in StoreCode table, return an error message
-            return "Code not valid"
+            return False
 
 
     def send_message(**kwargs):

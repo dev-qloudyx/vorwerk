@@ -30,9 +30,12 @@
 
 				{% if result %}
 					<div class="reward">
-					<legend class="mb-4" style="color: #e87e19;">{{ result }}</legend>
+            {% if not reward %}
+            <legend class="mb-4" style="color: #e87e19;"><a href="sms:{{ sms_number }}?body={{ bb_code_code }}">Envie um SMS para o {{ sms_number }} com o código {{ bb_code_code }}</a></legend>
+            {% endif %}
 						{% for i, image_filename in REWARD_IMAGES %}
 							{% if reward_type == i %}
+                <legend class="mb-4" style="color: #e87e19;">{{ result }}</legend>
 								<div class="d-flex">
 									<img src="{% static 'images/'|add:image_filename %}" alt="{{ reward }}" class="mx-auto">
 								</div>
@@ -42,6 +45,11 @@
 							{% endif %}
 						{% endfor %}
 					</div>
+        {% elif not result and bb_code%}
+        <div class="reward">
+          {% if not reward %}
+            <legend class="mb-4" style="color: #e87e19;">Código inválido</legend>
+          {% endif %}
 				{% endif %}
 			
 			{% endif %}

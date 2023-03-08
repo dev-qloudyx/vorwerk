@@ -140,8 +140,11 @@ def generate_bbcode(request):
             return render(request, 'eventos/generate_bbcode.html', context)
         elif check_bb.exists():
             context = {
-                'result': f'Envie um SMS para o {sms_number} com o código {check_bb[0].code}',
+                'result': True,
+                'sms_number': sms_number,
+                'bb_code_code': check_bb[0].code,
                 'bb_code': True,
+                'reward': False
             }
             return render(request, 'eventos/generate_bbcode.html', context)
         else:
@@ -154,10 +157,17 @@ def generate_bbcode(request):
                     }
                     return render(request, 'eventos/generate_bbcode.html', context)
                 else:
-                    result = CodeGeneration.generate_bb_code(request, code)
+                    bb = CodeGeneration.generate_bb_code(request, code)
+                    result = False
+                    if bb:
+                        result = True
+
                     context = {
-                        'result': f'Envie um SMS para o {sms_number} com o código {result}',
-                        'bb_code': True
+                        'result': result,
+                        'sms_number': sms_number,
+                        'bb_code_code': bb,
+                        'bb_code': True,
+                        'reward': False
                     }
                     return render(request, 'eventos/generate_bbcode.html', context)
             else:
