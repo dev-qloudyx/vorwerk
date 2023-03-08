@@ -418,6 +418,46 @@ div.navbar-collapse {
   max-height: 80px;
 }
 
+#mandolina-tab.nav-link.active i.mandolina-icon {
+  background-size: cover;
+  background-position: initial;
+  background-image: url(/static/images/mandolinawhite-icon.png);
+  width: 18px;
+  height: 21px;
+  margin-right: 5px;
+  margin-bottom: -5px;
+}
+
+#mandolina-tab.nav-link i.mandolina-icon {
+  background-size: cover;
+  background-position: initial;
+  background-image: url(/static/images/mandolina-icon.png);
+  width: 18px;
+  height: 21px;
+  margin-right: 5px;
+  margin-bottom: -5px;
+}
+
+#despensa-tab.nav-link.active i.despensa-icon {
+  background-size: cover;
+  background-position: initial;
+  background-image: url(/static/images/despensawhite-icon.png);
+  width: 18px;
+  height: 21px;
+  margin-right: 5px;
+  margin-bottom: -4px;
+}
+
+#despensa-tab.nav-link i.despensa-icon {
+  background-size: cover;
+  background-position: initial;
+  background-image: url(/static/images/despensa-icon.png);
+  width: 18px;
+  height: 21px;
+  margin-right: 5px;
+  margin-bottom: -4px;
+}
+
 /* ---------------------------------------------------
   CONTENT STYLE
 ----------------------------------------------------- */
