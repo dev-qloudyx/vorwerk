@@ -39,7 +39,7 @@
 
           {% if result %}
             <div class="reward">
-              <legend class="border-bottom mb-4" style="color: #e87e19;">{{ result }}: inserir aqui nome da reward </legend>
+              <legend class="border-bottom mb-4" style="color: #e87e19;">{{ result }}: {{ reward_type }} </legend>
                 {% for i, image_filename in REWARD_IMAGES %}
                   {% if reward_type == i %}
                     <div class="d-flex">
