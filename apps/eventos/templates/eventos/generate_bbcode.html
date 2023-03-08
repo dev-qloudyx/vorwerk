@@ -33,6 +33,7 @@
           </form>
         {% endif %}
         {% if result %}
+          <p>{{ result }}</p>
           {% for i, image_filename in REWARD_IMAGES %}
               {% if reward_type == i %}
               <img src="{% static 'images/'|add:image_filename %}" alt="{{ reward }}">
