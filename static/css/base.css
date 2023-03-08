@@ -458,6 +458,10 @@ div.navbar-collapse {
   margin-bottom: -4px;
 }
 
+.reward > div > img {
+  width: 50%;
+}
+
 /* ---------------------------------------------------
   CONTENT STYLE
 ----------------------------------------------------- */
@@ -508,12 +512,18 @@ div.navbar-collapse {
   #aretodos {
     margin-top: -40px; 
   }
+  .reward > div > img {
+    width: 60%;
+  }
 
 }
 
 @media (max-width: 767px) {
   #content {
     padding-bottom: 217px;
+  }
+  .reward > div > img {
+    width: 75%;
   }
 
   .footer {
