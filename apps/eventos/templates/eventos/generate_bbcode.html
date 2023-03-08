@@ -3,57 +3,49 @@
 {% load static %}
 
 {% block content %}
+<div class="row">
+	<div class="col-12 col-md-8 offset-md-2">
+		<div class="heroimgbox-login p-4 my-5">
 
-  {% if not user.is_authenticated %}
+			{% if not user.is_authenticated %}
+				<h5 class="text-center">Ainda não se registou?</h5>
+				<div class="text-center mb-4">
+					<a class="btn" href="{% url 'users:register' %}">Registar</a>
+				</div>
+				<h5 class="text-center">Já está registado?</h5>
+				<div class="text-center">
+					<a class="btn" href="{% url 'users:login' %}">Login</a> <br>
+				</div>
+			{% else %}
+			
+				{% if not reward and not bb_code %}
+					<legend class="border-bottom mb-4" style="color: #e87e19;">Insira o código que lhe foi dado na Loja</legend>
+					<div class="mb-3">
+						<form method="post">
+						{% csrf_token %}
+						{{ form|crispy }}
+						<button class="btn mt-3" type="submit">GERAR</button>
+						</form>
+				{% endif %}
 
-    <div class="row">
-      <div class="col-12 col-lg-6 offset-lg-3">
-        <div class="heroimgbox-login p-4 my-5">
-          <h5 class="text-center">Ainda não se registou?</h5>
-          <div class="text-center mb-4">
-            <a class="btn" href="{% url 'users:register' %}">Registar</a>
-          </div>
-          <h5 class="text-center">Já está registado?</h5>
-          <div class="text-center">
-            <a class="btn" href="{% url 'users:login' %}">Login</a> <br>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  {% else %}
-
-    <div class="row">
-      <div class="col-12 col-lg-8 offset-lg-2">
-        <div class="heroimgbox-login p-4 mt-5">
-
-          {% if not reward and not bb_code %}
-          <legend class="border-bottom mb-4" style="color: #e87e19;">Insira o código que lhe foi dado na Loja</legend>
-          <div class="mb-3">
-            <form method="post">
-              {% csrf_token %}
-              {{ form|crispy }}
-              <button class="btn mt-3" type="submit">GERAR</button>
-            </form>
-          {% endif %}
-
-          {% if result %}
-            <div class="reward">
-              <legend class="border-bottom mb-4" style="color: #e87e19;">{{ result }}: {{ reward_type }} </legend>
-                {% for i, image_filename in REWARD_IMAGES %}
-                  {% if reward_type == i %}
-                    <div class="d-flex">
-                      <img src="{% static 'images/'|add:image_filename %}" alt="{{ reward }}" class="mx-auto">
-                    </div>
-                    <h6>Parabéns! Pode fazer o levantamento do seu prémio a partir de dia 21 de março de 2023 na Loja onde participou no evento e no passatempo.*</h6>
-                    <span style="font-size: 0.75rem;">*Se está a participar na Loja de Coimbra, Loja de Aveiro ou Vorwerk Studios de Mirandela, Portimão ou Viana do Castelo, entraremos em contacto consigo via email para comunicar onde será feito o levantamento do seu prémio.</span>
-                  {% endif %}
-                {% endfor %}
-            </div>
-          {% endif %}
-          </div>
-        </div>
-      </div>
-    </div>
-  {% endif %}
+				{% if result %}
+					<div class="reward">
+					<legend class="border-bottom mb-4" style="color: #e87e19;">{{ result }}</legend>
+						{% for i, image_filename in REWARD_IMAGES %}
+							{% if reward_type == i %}
+								<div class="d-flex">
+									<img src="{% static 'images/'|add:image_filename %}" alt="{{ reward }}" class="mx-auto">
+								</div>
+								<h5 style="color: #e87e19;">{{ reward_type }}</h>
+								<h6>Parabéns! Pode fazer o levantamento do seu prémio a partir de dia 21 de março de 2023 na Loja onde participou no evento e no passatempo.*</h6>
+								<span style="font-size: 0.75rem;">*Se está a participar na Loja de Coimbra, Loja de Aveiro ou Vorwerk Studios de Mirandela, Portimão ou Viana do Castelo, entraremos em contacto consigo via email para comunicar onde será feito o levantamento do seu prémio.</span>
+							{% endif %}
+						{% endfor %}
+					</div>
+				{% endif %}
+			
+			{% endif %}
+		</div>
+	</div>
+</div>
 {% endblock %}
