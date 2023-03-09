@@ -32,7 +32,8 @@
 				{% if result %}
 					<div class="reward">
             			{% if not reward %}
-                    <legend class="mb-4" style="color: #e87e19;">Envie um SMS para o {{ sms_number }} com o código {{ bb_code_code }}</legend>
+                    <legend class="mb-2" style="color: #e87e19;">Envie um SMS* para o {{ sms_number }} com o código {{ bb_code_code }}</legend>
+					<span style="font-size: 0.75rem;">* O custo por SMS enviado para o nº 4242 é de aproximadamente 0,10€, de acordo com as condições de tarifário e operador para números curtos.</span>
             			{% endif %}
 					{% for i, image_filename in REWARD_IMAGES %}
 						{% if reward_type == i %}
