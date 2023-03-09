@@ -53,9 +53,10 @@
                 {% if user.is_authenticated %}
                 <li class="menu-user d-block d-lg-none">
                     <hr class="d-lg-none" style="border-top: 1px solid white;">
-                    <button onclick="logOut()" class="btn-rev btn-md mr-1"
+                    <!-- <button onclick="logOut()" class="btn-rev btn-md mr-1"
                         style="padding: 0.5rem 1rem;"><i class="fas fa-power-off"></i>&nbsp; Logout
-                    </button>
+                    </button> -->
+                    <a href="{% url 'users:logout' %}" class="btn-rev btn-md mr-1" style="padding: 0.5rem 1rem;"><i class="fas fa-power-off"></i>&nbsp; Logout</a>
                 </li>
                 {% endif %}
             </div>
@@ -64,7 +65,8 @@
             <a class="d-none d-lg-inline-block mr-1 px-3 py-2 menu-user" href="{% url 'users:profile' %}">
                 <img class="rounded-circle mr-2 p-1" src="{% static 'images/smiley.png' %}">{{ user.username }}
             </a>
-            <button onclick="logOut()" class="btn btn-md mr-2 d-none d-lg-inline-block" style="padding-left: 12px; padding-right: 12px;"><i class="fas fa-power-off"></i></button>
+            <a class="btn btn-md mr-2 d-none d-lg-inline-block" style="padding-left: 12px; padding-right: 12px;" href="{% url 'users:logout' %}"><i class="fas fa-power-off"></i></a>
+            <!-- <button onclick="logOut()" class="btn btn-md mr-2 d-none d-lg-inline-block" style="padding-left: 12px; padding-right: 12px;"><i class="fas fa-power-off"></i></button> -->
             {% endif %}
         </nav>
 
