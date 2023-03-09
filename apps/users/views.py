@@ -55,6 +55,10 @@ def profile(request):
     return render(request, 'users/profile.html', context)
 
 
+def login_register(request):
+    return render(request, 'users/login_register.html')
+
+
 class MyPasswordResetCompleteView(PasswordResetCompleteView):
     def dispatch(self, request, *args, **kwargs):
         response = super().dispatch(request, *args, **kwargs)

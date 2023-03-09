@@ -1,5 +1,6 @@
 from django import forms
 from .models import User, Profile
+from apps.locais.models import Local
 from django.utils.safestring import mark_safe
 from django.contrib.auth.forms import UserCreationForm
 
@@ -7,7 +8,7 @@ from django.contrib.auth.forms import UserCreationForm
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
     aceito = forms.BooleanField(widget=forms.CheckboxInput(),
-                           label=mark_safe('Aceito a <a class="x" href="#">Política de Privacidade</a>'))
+                           label=mark_safe('Aceito a <a class="x" href="https://www.vorwerk.com/pt/pt/c/home/geral/politica-de-privacidade" target="_blank">Política de Privacidade</a>'))
 
     class Meta:
         model = User
@@ -31,6 +32,7 @@ class UserRegisterForm(UserCreationForm):
         self.fields['first_name'].required = True
         self.fields['last_name'].required = True
         self.fields['aceito'].required = True
+        self.fields['loja'].queryset = Local.objects.all().order_by("nome")
 
 
 class ProfileRegisterForm(forms.ModelForm):

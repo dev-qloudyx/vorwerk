@@ -5,7 +5,7 @@ import os
 import time
 
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import CreateView
 
 from apps.eventos.code_gen import CodeGeneration
@@ -292,3 +292,10 @@ def download_codes(request, selected_codes):
     # Get the URL of the file in the media directory
     file_url = default_storage.url(filename)
     return file_url
+
+
+def choice(request):
+    if request.user.is_authenticated:
+        return redirect('eventos:passatempo')
+    else:
+        return redirect('users:login-register')
