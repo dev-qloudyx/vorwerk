@@ -24,7 +24,7 @@ class CodeGeneration:
             # Check if there is already a corresponding BBCode for this StoreCode
             bb_code = BBCode.objects.filter(store_code=store_code).first()
             if bb_code and bb_code.user != request.user:
-                return "BBCode already redeemed"
+                return False
             else:
                 # If there is no BBCode for this StoreCode, create a new unique BBCode
                 new_code = None

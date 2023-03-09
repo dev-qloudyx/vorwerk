@@ -7,6 +7,7 @@ import time
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic import CreateView
+from django.contrib import messages
 
 from apps.eventos.code_gen import CodeGeneration
 from apps.eventos.tasks import send_message
@@ -161,6 +162,9 @@ def generate_bbcode(request):
                     result = False
                     if bb:
                         result = True
+                    else:
+                        messages.error(request, 'Código já usado!')
+                        return redirect(reverse('eventos:passatempo'))
 
                     context = {
                         'result': result,
