@@ -22,7 +22,7 @@ def register(request):
                     email_template_name='users/password_define_email.txt',
                     html_email_template_name='users/password_define_email.html')
                 messages.success(request,
-                    f'Conta criada com sucesso. Agora já pode iniciar sessão e participar no passatempo.')
+                    f'Conta criada com sucesso. Consulte a caixa de correio {email} para definir a palavra-passe')
                 return redirect('users:login')
             else:
                 messages.error(request,
