@@ -65,7 +65,7 @@ class CodeGeneration:
         msisdn=kwargs['From']
         priority=50
         messageText=""
-        workingDays=True
+        workingDays=False
         isFlash=False
         mobileOperator=kwargs['mnc']
         
