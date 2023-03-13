@@ -21,5 +21,6 @@ urlpatterns = [
     path('import-store-codes/', import_store_codes, name='import_store_codes'),
     path('import-rewards/', import_rewards, name='import_rewards'),
     path('choice/', choice, name='choice'),
+    path('export_data/<str:choice>', CodeGeneration.export_data, name='export_data')
     
 ]

@@ -1,5 +1,7 @@
 import secrets
 import string
+
+from apps.users.models import User
 from .models import BBCode, Evento, Reward, StoreCode
 from django.http import HttpResponse
 from django.http import HttpResponse
@@ -9,6 +11,8 @@ from django.http import JsonResponse
 import requests
 import random
 from django.contrib import messages
+from apps.users.roles import ADMIN, role_required
+from django.contrib.auth.decorators import login_required
 
 # Code Generation logic 
 class CodeGeneration:
@@ -132,9 +136,58 @@ class CodeGeneration:
             'content': response.content.decode()
         })
     
+    @login_required
+    @role_required(ADMIN)
+    def export_data(request, choice):
+        from django.http import HttpResponse
+        from openpyxl import Workbook
+        from openpyxl.utils import get_column_letter
+        from django.utils.encoding import smart_str
 
-    ### NOT USED ###
+        wb = Workbook()
+        
+        ws = wb.active
+        
+        headers = ['Nome', 'Sobrenome', 'Loja', 'E-mail', 'Store Code', 'BB Code', 'Prémio']
+        headers_2 = ['Nome', 'Sobrenome', 'Loja', 'E-mail', 'Bimby', 'Prémio']
+        filename = None
+        if choice == "premio":
+            for col_num, header_title in enumerate(headers, 1):
+                col_letter = get_column_letter(col_num)
+                ws['%s1' % col_letter] = header_title
+            data = User.objects.exclude(reward=None).values_list('first_name', 'last_name', 'loja__nome', 'email', 'bbcode__store_code__code', 'bbcode__code', 'reward__reward')
+            filename = "premio"
+        if choice == "user":
+            for col_num, header_title in enumerate(headers_2, 1):
+                col_letter = get_column_letter(col_num)
+                ws['%s1' % col_letter] = header_title
+            data = User.objects.values_list('first_name', 'last_name', 'loja__nome', 'email', 'bimby__nome', 'reward__reward')
+            data = list(data)
+            for i, row in enumerate(data):
+                row = list(row)
+                if row[5] is None:
+                    row[5] = 'Não'
+                else:
+                    row[5] = 'Sim'
+                data[i] = tuple(row)
+            filename = "utilizador"
+            
 
+        for row_num, row_data in enumerate(data, 2):
+            for col_num, cell_value in enumerate(row_data, 1):
+                col_letter = get_column_letter(col_num)
+                ws['%s%s' % (col_letter, row_num)] = smart_str(cell_value)
+        
+        response = HttpResponse(content_type='application/ms-excel')
+
+        response['Content-Disposition'] = f'attachment; filename={filename}.xlsx'
+        
+        wb.save(response)
+        
+        return response
+        
+
+### NOT USED ###
     def select_codes(request, num_codes, eventid):
         
         #Instantiate event
